@@ -1,11 +1,12 @@
+import Navbar from './components/elements/Navbar';
+import Home from './components/pages/Home';
 import './main.scss';
-import Card from './components/Card';
-
 
 function App() {
   return (
     <div className="App">
-      Hot Sauce
+      <Navbar />
+      <Home />
     </div>
   );
 }
