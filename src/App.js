@@ -1,6 +1,4 @@
 import './main.scss';
-import Card from './components/Card';
-
 
 function App() {
   return (
