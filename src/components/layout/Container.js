@@ -4,7 +4,7 @@ import { getClassName } from '../../utils/getClassName';
 const Container = ({ children, className, center }) => {
 
     const variations = {
-        center: center && 'center', 
+        center: center && 'center'
 
     }
 

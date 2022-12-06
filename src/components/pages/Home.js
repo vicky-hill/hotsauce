@@ -1,12 +1,16 @@
 import React from 'react';
-import Heading from '../elements/Heading';
 import Container from '../layout/Container';
+import Recipes from './Recipes';
+import BestSellers from './BestSellers';
+import Space from '../elements/Space';
 
 const Home = ({ }) => {
 
     return (
         <Container center>
-            <Heading className="mt-5" accent="Our" text="hot sauce recipes" center />
+            <BestSellers />
+            <Space md />
+            <Recipes />
         </Container>
     )
 }

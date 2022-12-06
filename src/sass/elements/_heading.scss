@@ -4,6 +4,12 @@
     position: relative; 
     padding: 3rem 1rem;
     display: inline-block;
+
+    &__container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
     
     &__accent, &__text {
         position: relative;
