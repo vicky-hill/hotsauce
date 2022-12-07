@@ -58,19 +58,19 @@
 
     // Secondary
     &-secondary {
-        background-color: $secondary;
+        background-color: $black-light;
 
         &:focus {
-            box-shadow: 0 0 0 .3rem mix(white, $secondary, 55%);
-            background-color: mix(black, $secondary, 10%);
+            box-shadow: 0 0 0 .3rem mix(white, $black-light, 55%);
+            background-color: mix(black, $black-light, 10%);
         }
 
         &:hover {
-            background-color: mix(black, $secondary, 10%);
+            background-color: mix(black, $black-light, 10%);
         }
 
         &:disabled {
-            background-color: mix(white, $secondary, 45%);
+            background-color: mix(white, $black-light, 45%);
             cursor: auto;
         }
 
@@ -249,5 +249,10 @@
 
     &--round {
         border-radius: 2.8rem;
+        transition: box-shadow .3s ease-in,transform .3s ease-in,-webkit-box-shadow .3s ease-in,-webkit-transform .3s ease-in,-moz-transform .3s ease-in;
+
+        &:hover {
+            transform: scale(1.01);
+        }
     }
 }

@@ -1,14 +1,16 @@
 import React from 'react';
-import Container from '../layout/Container';
+import Container from '../../layout/Container';
 import Recipes from './Recipes';
 import BestSellers from './BestSellers';
-import Space from '../elements/Space';
+import Space from '../../elements/Space';
 import HeatLevels from './HeatLevels';
+import Banner from './Banner';
 
 const Home = ({ }) => {
 
     return (
-        <Container center>
+        <Container center className="">
+            <Banner />
             <BestSellers />
             <Space md />
             <HeatLevels />

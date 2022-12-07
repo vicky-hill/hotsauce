@@ -1,11 +1,11 @@
 import React from 'react';
-import Heading from '../elements/Heading';
-import Card from '../elements/Card';
+import Heading from '../../elements/Heading';
+import Card from '../../elements/Card';
 
-import level1 from '../../assets/level1.png';
-import level2 from '../../assets/level2.png';
-import level3 from '../../assets/level3.png';
-import level4 from '../../assets/level4.png';
+import level1 from '../../../assets/level1.png';
+import level2 from '../../../assets/level2.png';
+import level3 from '../../../assets/level3.png';
+import level4 from '../../../assets/level4.png';
 
 const HeatLevels = ({ }) => {
 
