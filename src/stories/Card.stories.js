@@ -36,7 +36,8 @@ export const HeatLevelCard = Template.bind({})
 HeatLevelCard.args = {
     type: 'heat',
     image: level1,
-    text: 'Our mildest sauces, ideal for anyone who doesn\'t want to get burned', 
+    text: 'Our mildest sauces, ideal for anyone who doesn\'t want to get burned',
+    highlight: 'mildest sauces',
     heatlevel: 'mild',
     className: "w-25"
 }

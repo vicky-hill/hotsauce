@@ -36,7 +36,7 @@ Button.propTypes = {
     loading: PropTypes.bool,
     block: PropTypes.bool,
     size: PropTypes.oneOf(['regular', 'small', 'big']),
-    children: PropTypes.element
+    children: PropTypes.oneOfType([PropTypes.element, PropTypes.string])
 }
 
 export default Button;

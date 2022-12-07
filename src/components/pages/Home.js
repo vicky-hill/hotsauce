@@ -3,6 +3,7 @@ import Container from '../layout/Container';
 import Recipes from './Recipes';
 import BestSellers from './BestSellers';
 import Space from '../elements/Space';
+import HeatLevels from './HeatLevels';
 
 const Home = ({ }) => {
 
@@ -10,6 +11,8 @@ const Home = ({ }) => {
         <Container center>
             <BestSellers />
             <Space md />
+            <HeatLevels />
+            <Space lg />
             <Recipes />
         </Container>
     )
