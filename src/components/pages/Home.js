@@ -14,6 +14,7 @@ const Home = ({ }) => {
             <HeatLevels />
             <Space lg />
             <Recipes />
+            <Space lg />
         </Container>
     )
 }

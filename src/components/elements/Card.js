@@ -19,7 +19,7 @@ const Card = ({ type, image, title, text, highlight, time, price, productName, h
         return (
             <>
                 {textArr[0]}
-                <span style={{ fontWeight: 700, color: getHeatLevelColor(true)}}>{textArr[1]} </span>
+                <span style={{ fontWeight: 700, color: getHeatLevelColor(true) }}>{textArr[1]}</span>
                 {textArr[2]}
             </>
         )

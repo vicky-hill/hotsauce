@@ -6,7 +6,7 @@ const Navbar = ({ }) => {
 
     return (
         <nav className='navbar'>
-            <h1 className='navbar__logo'><span className='navbar__logo--accent'>Hill</span> Sauce & Co</h1>
+            <h1 className='navbar__logo'><span className='navbar__logo--accent'>Hill</span> Sauce & Co.</h1>
             <div className="navbar__menu">
                 <ul>
                     <li>
