@@ -3,7 +3,7 @@ import { PropTypes } from 'prop-types';
 import Button from './Button';
 import bottle1 from '../../assets/bottle1.png';
 
-const Card = ({ type, image, title, text, time, price, productName, className }) => {
+const Card = ({ type, image, title, text, time, price, productName, heatlevel, className }) => {
 
     const recipeCard = (
         <div className={"card " + className}>
@@ -20,13 +20,15 @@ const Card = ({ type, image, title, text, time, price, productName, className })
     )
 
     const heatCard = (
-        <div className={"card card--heat " + className}>
-            <img src={image} />
+        <div className={"card card--heat-level " + className}>
+            <img className="card__image" src={image} />
             <div className="card__body">
                 <p className="card__text">{text}</p>
-                <div className="card__cto">
-                    <Button>See Recipe</Button>
-                </div>
+                <Button 
+                    rounded 
+                    gradient={heatlevel === 'mild' ? 'green' : heatlevel === 'medium' ? 'orange' : heatlevel === 'hot' ? 'red' : 'crimson'}>
+                        { `SHOP ${ heatlevel && heatlevel.toUpperCase()}` }
+                </Button>
             </div>
         </div>
     )
@@ -57,12 +59,43 @@ const Card = ({ type, image, title, text, time, price, productName, className })
     )
 }
 
+const propTypesRecipeCard = {
+    type: 'recipe',
+    image: PropTypes.string,
+    title: PropTypes.string,
+    text: PropTypes.string,
+    time: PropTypes.string,
+    className: PropTypes.string,
+}
+
+const propTypesHeatLevelCard = {
+    type: 'heat',
+    image: PropTypes.string,
+    text: PropTypes.string,
+    className: PropTypes.string,
+    heatlevel: PropTypes.oneOf(['mild', 'medium', 'hot', 'extra'])
+}
+
+const propTypesAddToCartCard = {
+    type: 'product',
+    image: PropTypes.string,
+    title: PropTypes.string,
+    price: PropTypes.number,
+    productName: PropTypes.string,
+    image: PropTypes.string,
+    text: PropTypes.string,
+    className: PropTypes.string,
+}
+
 Card.defaultProps = {
     className: ""
 }
 
 Card.propTypes = {
     type: PropTypes.oneOf(['recipe', 'heat', 'product']),
+    heatlevel: PropTypes.oneOf(['mild', 'medium', 'hot', 'extra']),
+    price: PropTypes.string,
+    productName: PropTypes.string,
     image: PropTypes.string,
     title: PropTypes.string,
     text: PropTypes.string,

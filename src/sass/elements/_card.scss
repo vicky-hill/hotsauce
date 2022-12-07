@@ -78,7 +78,7 @@
         align-items: center;
 
         &-time {
-            color: $primary;
+            color: $black;
             font-weight: 700;
             font-size: 1.1rem;
         }
@@ -100,7 +100,16 @@
     }
 
     // Heat level cards
-    &--heat {}
+    &--heat-level {
+        display: inline-block;
+        text-align: center;
+        box-shadow: none;
+
+        .card__image {
+            width: auto;
+            height: 18rem;
+        }
+    }
 
     // Add to cart cards
     &--add-to-cart {
@@ -124,7 +133,6 @@
         .card__image {
             width: auto;
             height: 28rem;
-            margin: 0 auto;
         }
 
         .card__body {

@@ -2,6 +2,7 @@ import Card from '../components/elements/Card';
 import '../main.scss';
 import img1 from '../assets/img1.png';
 import level1 from '../assets/level1.png';
+import bottle1 from '../assets/bottle1.png';
 
 export default {
     title: "Components/Card",
@@ -23,11 +24,21 @@ RecipeCard.args = {
 export const AddtoCartCard = Template.bind({})
 AddtoCartCard.args = {
     type: 'product',
-    image: img1,
+    image: bottle1,
     title: "Ribeye Steak",
     price: "$17.95",
     productName: "Chilli Sauce Exotic",
-    text: "Lorem ipsum dolor sit amet consectetur adipisicing elit."
+    text: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+    className: "w-25"
+}
+
+export const HeatLevelCard = Template.bind({})
+HeatLevelCard.args = {
+    type: 'heat',
+    image: level1,
+    text: 'Our mildest sauces, ideal for anyone who doesn\'t want to get burned', 
+    heatlevel: 'mild',
+    className: "w-25"
 }
 
 
