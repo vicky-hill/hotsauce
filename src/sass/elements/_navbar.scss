@@ -5,8 +5,11 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    position: sticky;
+    top: 0;
     padding: 2rem 5rem;
     line-height: 1;
+    z-index: 1000;
 
     &__logo {
         color: #fff;

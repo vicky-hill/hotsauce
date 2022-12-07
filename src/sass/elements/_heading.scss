@@ -4,6 +4,12 @@
     position: relative; 
     padding: 3rem 1rem;
     display: inline-block;
+
+    &__container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
     
     &__accent, &__text {
         position: relative;
@@ -22,6 +28,6 @@
         left: 17px;
         height: 9em;
         transform: rotate(-25deg);
-        opacity: .4;
+        opacity: .2;
     }
 }

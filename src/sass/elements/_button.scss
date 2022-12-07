@@ -8,13 +8,14 @@
     padding: 0 23px;
     border-radius: 10px;
     text-align: center;
-    border: 1px solid transparent;
+    // border: 1px solid transparent;
     line-height: inherit;
     transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 
     // Primary
     &-primary {
         background-color: $black;
+        background: linear-gradient(48deg, rgba(159, 21, 32, 1) 0%, rgba(121, 16, 24, 1) 100%);
 
         &:focus {
             box-shadow: 0 0 0 .3rem mix(white, $black, 55%);
@@ -57,19 +58,19 @@
 
     // Secondary
     &-secondary {
-        background-color: $secondary;
+        background-color: $black-light;
 
         &:focus {
-            box-shadow: 0 0 0 .3rem mix(white, $secondary, 55%);
-            background-color: mix(black, $secondary, 10%);
+            box-shadow: 0 0 0 .3rem mix(white, $black-light, 55%);
+            background-color: mix(black, $black-light, 10%);
         }
 
         &:hover {
-            background-color: mix(black, $secondary, 10%);
+            background-color: mix(black, $black-light, 10%);
         }
 
         &:disabled {
-            background-color: mix(white, $secondary, 45%);
+            background-color: mix(white, $black-light, 45%);
             cursor: auto;
         }
 
@@ -118,6 +119,83 @@
         &:active,
         &:hover {
             background: mix(black, $primary, 10%);
+        }
+    }
+
+    // Gradients
+    &--gradient-green {
+        width: 15rem;
+        background: linear-gradient(48deg, rgba(0, 209, 105, 1) 0%, #008643 100%);
+
+        &:focus {
+            box-shadow: 0 0 0 .3rem mix(white, #008643, 55%);
+            background-color: mix(black, #008643, 10%);
+        }
+
+        &:hover {
+            background-color: mix(black, #008643, 10%);
+        }
+
+        &:disabled {
+            background-color: mix(white, #008643, 45%);
+            cursor: auto;
+        }
+    }
+
+    &--gradient-orange {
+        width: 15rem;
+        background: linear-gradient(48deg, rgba(237, 141, 108, 1) 0%, #f15d29 100%);
+
+        &:focus {
+            box-shadow: 0 0 0 .3rem mix(white, #f15d29, 55%);
+            background-color: mix(black, #f15d29, 10%);
+        }
+
+        &:hover {
+            background-color: mix(black, #f15d29, 10%);
+        }
+
+        &:disabled {
+            background-color: mix(white, #f15d29, 45%);
+            cursor: auto;
+        }
+    }
+
+    &--gradient-red {
+        width: 15rem;
+        background: linear-gradient(48deg, rgba(236, 99, 105, 1) 0%, #ee1e27 100%);
+
+        &:focus {
+            box-shadow: 0 0 0 .3rem mix(white, #ee1e27, 55%);
+            background-color: mix(black, #ee1e27, 10%);
+        }
+
+        &:hover {
+            background-color: mix(black, #ee1e27, 10%);
+        }
+
+        &:disabled {
+            background-color: mix(white, #ee1e27, 45%);
+            cursor: auto;
+        }
+    }
+
+    &--gradient-crimson {
+        width: 15rem;
+        background: linear-gradient(48deg, rgba(159, 21, 32, 1) 0%, #791018 100%);
+        
+        &:focus {
+            box-shadow: 0 0 0 .3rem mix(white, #791018, 55%);
+            background-color: mix(black, #791018, 10%);
+        }
+
+        &:hover {
+            background-color: mix(black, #791018, 10%);
+        }
+
+        &:disabled {
+            background-color: mix(white, #791018, 45%);
+            cursor: auto;
         }
     }
 
@@ -171,5 +249,10 @@
 
     &--round {
         border-radius: 2.8rem;
+        transition: box-shadow .3s ease-in,transform .3s ease-in,-webkit-box-shadow .3s ease-in,-webkit-transform .3s ease-in,-moz-transform .3s ease-in;
+
+        &:hover {
+            transform: scale(1.01);
+        }
     }
 }

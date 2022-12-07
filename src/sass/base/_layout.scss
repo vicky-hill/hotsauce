@@ -1,9 +1,21 @@
 .container {
-    width: 85%;
+    width: 90%;
     margin: 3rem auto;
     padding: 15px;
+}
 
-    &.center {
-        text-align: center;
+.space {
+    background-color: transparent;
+
+    &.sm {
+        height: 5rem;
+    }
+   
+    &.md {
+        height: 10rem;
+    }
+
+    &.lg {
+        height: 15rem;
     }
 }

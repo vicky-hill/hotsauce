@@ -2,7 +2,7 @@ import React from 'react';
 import { PropTypes } from 'prop-types';
 import { getClassName } from '../../utils/getClassName';
 
-const Button = ({ children, variant, size, outline, rounded, loading, block, className, ...props }) => {
+const Button = ({ children, variant, size, outline, rounded, loading, block, gradient, className, ...props }) => {
 
     const variations = {
         variant: variant && `btn-${variant}`,
@@ -10,7 +10,8 @@ const Button = ({ children, variant, size, outline, rounded, loading, block, cla
         loading: loading && 'btn--loading',
         rounded: rounded && 'btn--round',
         block: block && 'btn--block',
-        size: size && size !== 'regular' && `btn--${size}`
+        size: size && size !== 'regular' && `btn--${size}`,
+        gradient: gradient && `btn--gradient-${gradient}`
     }
 
     return (
@@ -29,12 +30,13 @@ Button.defaultProps = {
 
 Button.propTypes = {
     variant: PropTypes.oneOf(['primary', 'secondary']),
+    gradient: PropTypes.oneOf(['green', 'orange', 'red', 'crimson']),
     outline: PropTypes.bool,
     rounded: PropTypes.bool,
     loading: PropTypes.bool,
     block: PropTypes.bool,
     size: PropTypes.oneOf(['regular', 'small', 'big']),
-    children: PropTypes.element
+    children: PropTypes.oneOfType([PropTypes.element, PropTypes.string])
 }
 
 export default Button;

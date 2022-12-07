@@ -15,9 +15,12 @@
 @import "sass/base/_layout";
 
 // Elements
-@import "components/elements/Card.scss";
-@import "components/elements/Button.scss";
-@import "components/elements/Navbar.scss";
-@import "components/elements/Heading.scss";
+@import "sass/elements/_card.scss";
+@import "sass/elements/_button.scss";
+@import "sass/elements/_navbar.scss";
+@import "sass/elements/_heading.scss";
+@import "sass/elements/_banner.scss";
 
+// Pages
+@import "sass/pages/_home.scss";
 

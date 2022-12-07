@@ -1,0 +1,43 @@
+.banner {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-around;
+    margin-bottom: 4rem;
+
+    &__text {
+        margin-top: 8rem;
+    }
+
+    &__line {
+        display: inline-block;
+        color: $black;
+        font-weight: 400;
+        font-size: 5rem;
+        line-height: 1;
+    }
+
+    &__line--block {
+        display: block;
+    }
+
+    &__accent {
+        font-family: 'oracle';
+        color: #E0262C !important;
+        font-size: 8rem !important;
+        line-height: 1;
+        font-weight: 500;
+    }
+
+    &__btn {
+        width: 180px;
+        height: 4rem;
+        font-size: 1.5rem;
+        margin-top: 4.5rem;
+    }
+
+    &__image {
+        height: 55rem;
+        position: relative;
+        left: 4rem;
+    }
+}

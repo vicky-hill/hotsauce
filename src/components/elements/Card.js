@@ -1,30 +1,128 @@
 import React from 'react';
-import Button from './Button';
 import { PropTypes } from 'prop-types';
-import "./Card.scss";
+import Button from './Button';
+import bottle1 from '../../assets/bottle1.png';
 
-const Card = ({ image, title, text, time }) => {
+const Card = ({ type, image, title, text, highlight, time, price, productName, heatlevel, className }) => {
 
-    return (
-        <div className="card w-25 m-30">
+    const getHeatLevelColor = (code) => {
+        const colorName = heatlevel === 'mild' ? 'green' : heatlevel === 'medium' ? 'orange' : heatlevel === 'hot' ? 'red' : 'crimson';
+        const colorCode = heatlevel === 'mild' ? '#008643' : heatlevel === 'medium' ? '#f15d29' : heatlevel === 'hot' ? '#ee1e27' : '#791018';
+
+        return code ? colorCode : colorName;
+    }
+
+    const getTextWithHightlights = (text, highlight) => {
+        const textArr = text.split(highlight)
+        textArr.splice(1, 0, highlight)
+
+        return (
+            <>
+                {textArr[0]}
+                <span style={{ fontWeight: 700, color: getHeatLevelColor(true) }}>{textArr[1]}</span>
+                {textArr[2]}
+            </>
+        )
+    }
+
+    const recipeCard = (
+        <div className={"card " + className}>
             <div className="card__image" style={{ backgroundImage: `url(${image})` }}></div>
             <div className="card__body">
                 <h5 className="card__title">{title}</h5>
                 <p className="card__text">{text}</p>
                 <div className="card__cto">
-                    <p>{time}</p>
+                    <p className="card__cto-time">{time}</p>
                     <Button>See Recipe</Button>
                 </div>
             </div>
         </div>
     )
+
+    const heatCard = (
+        <div className={"card card--heat-level " + className}>
+            <img className="card__image" src={image} />
+            <div className="card__body">
+                <p className="card__text">{getTextWithHightlights(text, highlight)}</p>
+                <Button
+                    rounded
+                    gradient={getHeatLevelColor()}>
+                    {`SHOP ${heatlevel && heatlevel.toUpperCase()}`}
+                </Button>
+            </div>
+        </div>
+    )
+
+    const productCard = (
+        <div className={"card card--add-to-cart  " + className}>
+            <div className="card__body">
+                <img className="card__image" src={image} />
+                <p className="card__name">{productName}</p>
+                <p className="card__text">{text}</p>
+                <div className="card__cto">
+                    <p className="card__cto-price">{price}</p>
+                    <Button>Add To Cart</Button>
+                </div>
+            </div>
+        </div>
+    )
+
+    return (
+        <>
+            {
+                type === 'recipe' ? recipeCard :
+                    type === 'heat' ? heatCard :
+                        type === 'product' ? productCard : null
+            }
+        </>
+    )
 }
 
-Card.propTypes = {
+const propTypesRecipeCard = {
+    type: 'recipe',
     image: PropTypes.string,
     title: PropTypes.string,
     text: PropTypes.string,
-    time: PropTypes.string
+    time: PropTypes.string,
+    className: PropTypes.string,
 }
+
+const propTypesHeatLevelCard = {
+    type: 'heat',
+    image: PropTypes.string,
+    text: PropTypes.string,
+    highlight: PropTypes.string,
+    className: PropTypes.string,
+    heatlevel: PropTypes.oneOf(['mild', 'medium', 'hot', 'extra'])
+}
+
+const propTypesAddToCartCard = {
+    type: 'product',
+    image: PropTypes.string,
+    title: PropTypes.string,
+    price: PropTypes.number,
+    productName: PropTypes.string,
+    image: PropTypes.string,
+    text: PropTypes.string,
+    className: PropTypes.string,
+}
+
+Card.defaultProps = {
+    className: ""
+}
+
+Card.propTypes = {
+    type: PropTypes.oneOf(['recipe', 'heat', 'product']),
+    heatlevel: PropTypes.oneOf(['mild', 'medium', 'hot', 'extra']),
+    price: PropTypes.string,
+    productName: PropTypes.string,
+    image: PropTypes.string,
+    title: PropTypes.string,
+    text: PropTypes.string,
+    highlight: PropTypes.string,
+    time: PropTypes.string,
+    className: PropTypes.string
+}
+
 
 export default Card;
