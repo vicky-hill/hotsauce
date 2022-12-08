@@ -44,8 +44,8 @@
             }
 
             &:hover {
-                background-color: $black;
-                color: #fff;
+                color: $secondary;
+                border: 1px solid $secondary;
             }
 
             &:disabled {
@@ -81,14 +81,16 @@
             border: 1px solid $black-light;
 
             &:focus {
-                box-shadow: 0 0 0 .3rem mix(white, $black-light, 55%);
-                background-color: $black-light;
-                color: #fff;
+                box-shadow: 0 0 0 .3rem mix(white, $primary, 55%);
+                color: $primary;
+                border: 1px solid $primary;
+                background: transparent;
             }
 
             &:hover {
-                background-color: $black-light;
-                color: #fff;
+                color: $primary;
+                border: 1px solid $primary;
+                background: transparent;
             }
 
             &:disabled {
