@@ -1,16 +1,28 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faMagnifyingGlass, faCartShopping } from '@fortawesome/free-solid-svg-icons';
+import chilli from '../../assets/chilli.png';
 
 import SideCart from '../pages/cart/SideCart';
 
 const Navbar = ({ }) => {
     const [sidecart, setSidecart] = useState(false);
+    const [logo, setLogo] = useState(false);
 
+    useEffect(() => {
+        document.addEventListener('scroll', (e) => {
+            if(window.scrollY > 70) {
+                setLogo(true);
+            } else {
+                setLogo(false);
+            }
+        });
+    }, [])
+
+    
     return (
         <>
-
             <header className='header'>
                 <Link to="/">
                     <h1 className='header__logo'><span className='header__logo--accent'>Hill</span> Sauce & Co.</h1>
@@ -21,6 +33,9 @@ const Navbar = ({ }) => {
 
                 <div className="navbar__menu">
                     <ul>
+                        <li className={`navbar__logo ${logo ? 'show' : ''}`} >
+                            <img src={chilli} />
+                        </li>
                         <li>
                             <a href="#">Hot Sauces</a>
                         </li>
