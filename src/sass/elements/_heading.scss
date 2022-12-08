@@ -16,6 +16,10 @@
         font-size: 3rem;
         font-weight: 600;
     }
+
+    &__text:first-letter {
+        text-transform:capitalize;
+    }
     
     &__accent { 
         color: $primary;

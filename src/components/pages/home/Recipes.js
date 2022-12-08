@@ -1,6 +1,7 @@
 import React from 'react';
 import Card from '../../elements/Card';
 import Heading from '../../elements/Heading';
+import Grid from '../../layout/Grid';
 
 import img1 from '../../../assets/img1.png';
 import img2 from '../../../assets/img2.png';
@@ -46,7 +47,7 @@ const Recipes = ({ }) => {
     return (
         <>
             <Heading className="my-5" accent="Our" text="hot sauce recipes" />
-            <div className="recipes mt-4">
+            <Grid col={5} gap={3}>
                 {
                     recipes.map((recipe, i) => (
                         <Card
@@ -59,7 +60,7 @@ const Recipes = ({ }) => {
                         />
                     ))
                 }
-            </div>
+            </Grid>
         </>
     )
 }

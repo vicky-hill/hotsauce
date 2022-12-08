@@ -1,27 +1,70 @@
 @import "../../sass/base/variables";
 
-.navbar {
-    background-image: url("../../assets/wood.png");
+
+.header, .navbar {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    position: sticky;
-    top: 0;
-    padding: 2rem 5rem;
     line-height: 1;
-    z-index: 1000;
+    z-index: 10;
+    color: #fff;
+}
+
+.header {
+    background-image: url("../../assets/wood-top.png");
+    padding: .8rem 5rem;
+    padding-bottom: 0;
 
     &__logo {
+        position: relative;
+        top: 10px;
         color: #fff;
         font-family: 'oracle';
         font-size: 60px;
         font-weight: 100;
-        margin-bottom: 1rem;
         font-weight: 100;
 
         &--accent {
             color: $primary;
         }
+    }
+}
+
+.navbar {
+    background-image: url("../../assets/wood-bottom.png");
+    position: relative;
+    padding: 2rem 5rem;
+    position: sticky;
+    top: 0;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+
+    
+
+    &__logo {
+        img {
+            visibility: hidden;
+            opacity: 0;
+            height: 3rem;
+            position: absolute;
+            top: 13px;
+            transform: translateX(-3.5rem);
+            transition: .3s;
+        }
+
+
+        &.show {
+
+            img {
+                opacity: 1;
+                visibility: visible;
+                transform: translate(0);   
+            }
+            
+            & + li {
+                margin-left: 3.5rem;
+            }
+        }
+
     }
 
     &__menu {
@@ -34,6 +77,10 @@
             flex-direction: row;
             align-items: center;
             margin-bottom: 0;
+
+            li {
+                transition: .3s;
+            }
 
             li a {
                 padding: 0.4rem 0.8rem;
@@ -52,7 +99,35 @@
         }
     }
 
-    &__icons > *:not(:last-of-type) {
-        margin-right: 2rem;
-    }
+    &__icons {
+        & > * {
+            cursor: pointer;
+        }
+
+        & > *:not(:last-of-type) {
+            margin-right: 2rem;
+        }
+
+        &-btn {
+            position: relative;
+            display: inline-block;
+        }
+
+        &-badge {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: $primary;
+            border-radius: 50%;
+            width: 1.5rem;
+            height: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #fff;
+            padding-bottom: 1px;
+        }
+    } 
 }

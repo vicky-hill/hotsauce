@@ -1,0 +1,41 @@
+@import "../base/variables";
+
+.footer {
+    background-color: #000;
+    color: rgba(255, 255, 255, 0.4);
+    font-weight: 400;
+    margin-top: 15rem;
+
+    &__content {
+        width: 35rem;
+        margin: 0 auto;
+        text-align: center;
+        padding-top: 5rem;
+        padding-bottom: 2rem;
+
+        &-links {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            margin-bottom: 2rem;
+            font-size: 1.4rem;
+
+            a {
+                color: rgba(255, 255, 255, 0.4);
+                font-weight: 700;
+            }
+        } 
+
+        &-copy {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            font-weight: 400;
+        }
+
+        &-social svg {
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 1.8rem;
+            margin-right: 3rem;
+        }
+    }
+}

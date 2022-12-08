@@ -19,6 +19,7 @@ const Heading = ({ accent, text, center, top, left, className }) => {
     )
 }
 
+
 Heading.propTypes = {
     accent: PropTypes.string,
     text: PropTypes.string,

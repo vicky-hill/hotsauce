@@ -1,16 +1,16 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
+import { Link } from 'react-router-dom';
+import { getHeatLevelColor } from '../../utils/getHeatLevelColor';
+
 import Button from './Button';
+
 import bottle1 from '../../assets/bottle1.png';
 
-const Card = ({ type, image, title, text, highlight, time, price, productName, heatlevel, className }) => {
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCartShopping } from '@fortawesome/free-solid-svg-icons'
 
-    const getHeatLevelColor = (code) => {
-        const colorName = heatlevel === 'mild' ? 'green' : heatlevel === 'medium' ? 'orange' : heatlevel === 'hot' ? 'red' : 'crimson';
-        const colorCode = heatlevel === 'mild' ? '#008643' : heatlevel === 'medium' ? '#f15d29' : heatlevel === 'hot' ? '#ee1e27' : '#791018';
-
-        return code ? colorCode : colorName;
-    }
+const Card = ({ type, image, title, text, highlight, time, price, productName, heatlevel, className, onClick }) => {
 
     const getTextWithHightlights = (text, highlight) => {
         const textArr = text.split(highlight)
@@ -19,7 +19,7 @@ const Card = ({ type, image, title, text, highlight, time, price, productName, h
         return (
             <>
                 {textArr[0]}
-                <span style={{ fontWeight: 700, color: getHeatLevelColor(true) }}>{textArr[1]}</span>
+                <span style={{ fontWeight: 700, color: getHeatLevelColor(heatlevel, true) }}>{textArr[1]}</span>
                 {textArr[2]}
             </>
         )
@@ -44,11 +44,13 @@ const Card = ({ type, image, title, text, highlight, time, price, productName, h
             <img className="card__image" src={image} />
             <div className="card__body">
                 <p className="card__text">{getTextWithHightlights(text, highlight)}</p>
-                <Button
-                    rounded
-                    gradient={getHeatLevelColor()}>
-                    {`SHOP ${heatlevel && heatlevel.toUpperCase()}`}
-                </Button>
+                <Link to={`category/${heatlevel}`}>
+                    <Button
+                        rounded
+                        gradient={getHeatLevelColor(heatlevel)}>
+                        {`SHOP ${heatlevel && heatlevel.toUpperCase()}`}
+                    </Button>
+                </Link>
             </div>
         </div>
     )
@@ -61,7 +63,10 @@ const Card = ({ type, image, title, text, highlight, time, price, productName, h
                 <p className="card__text">{text}</p>
                 <div className="card__cto">
                     <p className="card__cto-price">{price}</p>
-                    <Button>Add To Cart</Button>
+                    <Button style={{ paddingLeft: '21px' }} onClick={onClick}>
+                        <FontAwesomeIcon className="mr-3" icon={faCartShopping} color="#fff" />
+                        Add To Cart
+                    </Button>
                 </div>
             </div>
         </div>
@@ -85,6 +90,7 @@ const propTypesRecipeCard = {
     text: PropTypes.string,
     time: PropTypes.string,
     className: PropTypes.string,
+    onClick: PropTypes.func
 }
 
 const propTypesHeatLevelCard = {
@@ -93,6 +99,7 @@ const propTypesHeatLevelCard = {
     text: PropTypes.string,
     highlight: PropTypes.string,
     className: PropTypes.string,
+    onClick: PropTypes.func,
     heatlevel: PropTypes.oneOf(['mild', 'medium', 'hot', 'extra'])
 }
 
@@ -105,6 +112,7 @@ const propTypesAddToCartCard = {
     image: PropTypes.string,
     text: PropTypes.string,
     className: PropTypes.string,
+    onClick: PropTypes.func
 }
 
 Card.defaultProps = {
@@ -121,7 +129,8 @@ Card.propTypes = {
     text: PropTypes.string,
     highlight: PropTypes.string,
     time: PropTypes.string,
-    className: PropTypes.string
+    className: PropTypes.string,
+    onClick: PropTypes.func
 }
 
 

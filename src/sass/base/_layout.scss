@@ -19,3 +19,41 @@
         height: 15rem;
     }
 }
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 5rem;
+
+    &__col--3 {
+        grid-template-columns: repeat(3, 1fr) !important;
+    }
+
+    &__col--4 {
+        grid-template-columns: repeat(4, 1fr) !important;
+    }
+
+    &__col--5 {
+        grid-template-columns: repeat(5, 1fr) !important;
+    }
+
+    &__gap--1 {
+        grid-gap: 1rem !important;
+    }
+
+    &__gap--2 {
+        grid-gap: 2rem !important;
+    }
+
+    &__gap--3 {
+        grid-gap: 3rem !important;
+    }
+
+    &__gap--4 {
+        grid-gap: 4rem !important;
+    }
+
+    &__gap--5 {
+        grid-gap: 5rem !important;
+    }
+}

@@ -1,13 +1,24 @@
+import React from 'react';
+import { Routes, Route } from 'react-router-dom';
+import './main.scss';
+
 import Navbar from './components/elements/Navbar';
 import Home from './components/pages/home/Home';
-import './main.scss';
+import Category from './components/pages/category/Category';
+import Footer from './components/layout/Footer';
+
+
 
 function App() {
   return (
-    <div className="App">
+    <>
       <Navbar />
-      <Home />
-    </div>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/category/:category" element={<Category />} />
+      </Routes>
+      <Footer />
+    </>
   );
 }
 

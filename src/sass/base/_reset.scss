@@ -1,11 +1,31 @@
 *,
 *::before,
 *::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
+// html,
+// body {
+//     height: 100%;
+//     overflow: hidden;
+// }
+
+// #root {
+//     position: absolute;
+//     top: 0;
+//     bottom: 0;
+//     left: 0;
+//     right: 0;
+//     overflow: auto;
+//     -ms-overflow-style: none;
+//     scrollbar-width: none;
+
+//     &::-webkit-scrollbar {
+//         display: none;
+//     }    
+// }
 
 html {
     font-size: 62.5%;
@@ -27,7 +47,7 @@ a {
 }
 
 li {
-    list-style-type:none;
+    list-style-type: none;
 }
 
 button {
@@ -43,7 +63,7 @@ button:hover {
     outline: none;
 }
 
-button:active, 
+button:active,
 button:focus {
     outline: none;
 }
