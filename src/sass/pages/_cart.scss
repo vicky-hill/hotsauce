@@ -1,0 +1,32 @@
+.add-to-cart-modal {
+    padding: 2rem 3rem;
+    text-align: center;
+    width: 48rem;
+
+    &__product {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        margin-top: 1rem;
+        margin-left: 1rem;
+
+        &-image {
+            height: 10rem;
+        }
+
+        &-info {
+            text-align: left;
+            padding-left: 2rem;
+        }
+
+        &-price {
+            font-weight: 700;
+        }
+    }
+
+    &__btns {
+        display: flex;
+        margin-top: 2rem;
+    }
+}
+

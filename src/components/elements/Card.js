@@ -3,7 +3,10 @@ import { PropTypes } from 'prop-types';
 import Button from './Button';
 import bottle1 from '../../assets/bottle1.png';
 
-const Card = ({ type, image, title, text, highlight, time, price, productName, heatlevel, className }) => {
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCartShopping } from '@fortawesome/free-solid-svg-icons'
+
+const Card = ({ type, image, title, text, highlight, time, price, productName, heatlevel, className, onClick }) => {
 
     const getHeatLevelColor = (code) => {
         const colorName = heatlevel === 'mild' ? 'green' : heatlevel === 'medium' ? 'orange' : heatlevel === 'hot' ? 'red' : 'crimson';
@@ -61,7 +64,10 @@ const Card = ({ type, image, title, text, highlight, time, price, productName, h
                 <p className="card__text">{text}</p>
                 <div className="card__cto">
                     <p className="card__cto-price">{price}</p>
-                    <Button>Add To Cart</Button>
+                    <Button style={{ paddingLeft: '21px'}} onClick={onClick}>
+                        <FontAwesomeIcon className="mr-3" icon={faCartShopping} color="#fff" />
+                        Add To Cart
+                    </Button>
                 </div>
             </div>
         </div>
@@ -85,6 +91,7 @@ const propTypesRecipeCard = {
     text: PropTypes.string,
     time: PropTypes.string,
     className: PropTypes.string,
+    onClick: PropTypes.func
 }
 
 const propTypesHeatLevelCard = {
@@ -93,6 +100,7 @@ const propTypesHeatLevelCard = {
     text: PropTypes.string,
     highlight: PropTypes.string,
     className: PropTypes.string,
+    onClick: PropTypes.func,
     heatlevel: PropTypes.oneOf(['mild', 'medium', 'hot', 'extra'])
 }
 
@@ -105,6 +113,7 @@ const propTypesAddToCartCard = {
     image: PropTypes.string,
     text: PropTypes.string,
     className: PropTypes.string,
+    onClick: PropTypes.func
 }
 
 Card.defaultProps = {
@@ -121,7 +130,8 @@ Card.propTypes = {
     text: PropTypes.string,
     highlight: PropTypes.string,
     time: PropTypes.string,
-    className: PropTypes.string
+    className: PropTypes.string,
+    onClick: PropTypes.func
 }
 
 
