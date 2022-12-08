@@ -13,9 +13,6 @@ import set2 from '../../../assets/set2.png';
 import set3 from '../../../assets/set3.png';
 import set4 from '../../../assets/set4.png';
 
-
-
-
 const BestSellers = ({ }) => {
     const [modal, setModal] = useState(false);
     const [selectedProduct, setSelectedProduct] = useState(null);
