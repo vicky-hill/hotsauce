@@ -9,7 +9,7 @@ const Navbar = ({ }) => {
 
     return (
         <>
-            
+
             <nav className='navbar'>
                 <h1 className='navbar__logo'><span className='navbar__logo--accent'>Hill</span> Sauce & Co.</h1>
                 <div className="navbar__menu">
@@ -31,9 +31,19 @@ const Navbar = ({ }) => {
                         </li>
                     </ul>
                     <div className="navbar__icons">
-                        <FontAwesomeIcon icon={faUser} color="#fff" />
-                        <FontAwesomeIcon icon={faMagnifyingGlass} color="#fff" />
-                        <FontAwesomeIcon icon={faCartShopping} onClick={() => setSidecart(true)} color="#fff" />
+                        <div className="navbar__icons-btn">
+                            <FontAwesomeIcon icon={faUser} color="#fff" />
+                        </div>
+
+                        <div className="navbar__icons-btn">
+                            <FontAwesomeIcon icon={faMagnifyingGlass} color="#fff" />
+                        </div>
+
+                        <div className="navbar__icons-btn">
+                            <FontAwesomeIcon icon={faCartShopping} onClick={() => setSidecart(true)} color="#fff" />
+                            <span className='navbar__icons-badge'>2</span>
+                        </div>
+
                     </div>
                 </div>
             </nav>

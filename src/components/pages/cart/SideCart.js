@@ -13,7 +13,6 @@ const SideCart = ({ open, close }) => {
 
     return (
         <SlidingPane
-            // closeIcon={<i className="fas fa-times" style={{ fontSize: 18 }}></i>}
             isOpen={open}
             hideHeader
             onRequestClose={close}
@@ -57,7 +56,7 @@ const SideCart = ({ open, close }) => {
                             <p>$33.95</p>
                         </div>
                         <div className="sidecart__footer-line">
-                            <p>Delivery:</p>
+                            <p>Shipping:</p>
                             <p>Free</p>
                         </div>
                         <div className="sidecart__footer-line sidecart__footer-total">
