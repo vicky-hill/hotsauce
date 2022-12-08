@@ -11,10 +11,14 @@ const Navbar = ({ }) => {
     return (
         <>
 
-            <nav className='navbar'>
+            <header className='header'>
                 <Link to="/">
-                    <h1 className='navbar__logo'><span className='navbar__logo--accent'>Hill</span> Sauce & Co.</h1>
+                    <h1 className='header__logo'><span className='header__logo--accent'>Hill</span> Sauce & Co.</h1>
                 </Link>
+            </header>
+
+            <nav className='navbar'>
+
                 <div className="navbar__menu">
                     <ul>
                         <li>
