@@ -43,7 +43,7 @@
 }
 
 .slide-pane__content {
-    padding: 0;
+    padding: 0 !important;
 }
 
 .sidecart {
@@ -74,10 +74,11 @@
             display: flex;
             align-items: center;
             justify-content: flex-start;
+            margin-bottom: 2em;
         }
 
         &-image {
-            height: 10rem;
+            height: 8rem;
         }
 
         &-info {

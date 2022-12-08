@@ -56,7 +56,7 @@ const BestSellers = ({ }) => {
     return (
         <>
             <Heading className="my-5 mt-5" accent="Our " text="bestsellers" />
-            <div className="recipes mt-4">
+            <div className="grid mt-4">
                 {
                     products.map((product, i) => (
                         <Card

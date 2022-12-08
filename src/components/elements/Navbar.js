@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faMagnifyingGlass, faCartShopping } from '@fortawesome/free-solid-svg-icons';
 
@@ -11,7 +12,9 @@ const Navbar = ({ }) => {
         <>
 
             <nav className='navbar'>
-                <h1 className='navbar__logo'><span className='navbar__logo--accent'>Hill</span> Sauce & Co.</h1>
+                <Link to="/">
+                    <h1 className='navbar__logo'><span className='navbar__logo--accent'>Hill</span> Sauce & Co.</h1>
+                </Link>
                 <div className="navbar__menu">
                     <ul>
                         <li>
