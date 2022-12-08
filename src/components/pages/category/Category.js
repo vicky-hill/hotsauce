@@ -8,9 +8,9 @@ import product3 from '../../../assets/product3.png';
 import product4 from '../../../assets/product4.png';
 import product5 from '../../../assets/product5.png';
 
-import Card from '../../elements/Card';
 import Heading from '../../elements/Heading';
 import Container from '../../layout/Container';
+import ProductGrid from '../product/ProductGrid';
 
 const Category = ({ }) => {
 
@@ -97,20 +97,7 @@ const Category = ({ }) => {
     return (
         <Container>
             <Heading className="my-5 mt-5" text={`${category} hot sauces`} />
-            <div className="grid mt-4">
-                {
-                    products.map((product, i) => (
-                        <Card
-                            key={i}
-                            type={product.type}
-                            image={product.image}
-                            price={product.price}
-                            text={product.text}
-                            productName={product.name}
-                        />
-                    ))
-                }
-            </div>
+            <ProductGrid products={products} />
         </Container>
     )
 }

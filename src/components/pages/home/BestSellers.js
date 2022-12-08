@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import Card from '../../elements/Card';
 import Heading from '../../elements/Heading';
-import AddToCartModal from '../cart/AddToCartModal';
+
 
 import bottle1 from '../../../assets/bottle1.png';
 import bottle2 from '../../../assets/bottle2.png';
@@ -12,11 +11,9 @@ import set1 from '../../../assets/set1.png';
 import set2 from '../../../assets/set2.png';
 import set3 from '../../../assets/set3.png';
 import set4 from '../../../assets/set4.png';
+import ProductGrid from '../product/ProductGrid';
 
 const BestSellers = ({ }) => {
-    const [modal, setModal] = useState(false);
-    const [selectedProduct, setSelectedProduct] = useState(null);
-
     const products = [
         {
             type: 'product',
@@ -48,31 +45,10 @@ const BestSellers = ({ }) => {
         },
     ]
 
-    const openModal = (product) => {
-        setModal(true);
-        setSelectedProduct(product);
-    }
-
     return (
         <>
             <Heading className="my-5 mt-5" accent="Our " text="bestsellers" />
-            <div className="grid mt-4">
-                {
-                    products.map((product, i) => (
-                        <Card
-                            key={i}
-                            type={product.type}
-                            image={product.image}
-                            price={product.price}
-                            text={product.text}
-                            productName={product.name}
-                            onClick={() => openModal(product)}
-                        />
-                    ))
-                }
-            </div>
-            
-            <AddToCartModal modal={modal} setModal={setModal} product={selectedProduct} />
+            <ProductGrid products={products} />
         </>
 
     )
