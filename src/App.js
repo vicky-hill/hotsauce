@@ -8,12 +8,14 @@ import Navbar from './components/elements/Navbar';
 import Home from './components/pages/home/Home';
 import Category from './components/pages/category/Category';
 import Footer from './components/layout/Footer';
+import Loader from './components/layout/Loader';
 
 
 
 function App() {
   return (
     <Provider store={store}>
+      <Loader />
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
