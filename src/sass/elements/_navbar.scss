@@ -48,7 +48,7 @@
             position: absolute;
             top: 13px;
             transform: translateX(-3.5rem);
-            transition: .3s;
+            transition: .3s ease-in;
         }
 
 
@@ -79,7 +79,7 @@
             margin-bottom: 0;
 
             li {
-                transition: .3s;
+                transition: .3s ease-in;
             }
 
             li a {

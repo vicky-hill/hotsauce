@@ -1,5 +1,7 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { store } from './store';
 import './main.scss';
 
 import Navbar from './components/elements/Navbar';
@@ -11,14 +13,14 @@ import Footer from './components/layout/Footer';
 
 function App() {
   return (
-    <>
+    <Provider store={store}>
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/category/:category" element={<Category />} />
       </Routes>
       <Footer />
-    </>
+    </Provider>
   );
 }
 
