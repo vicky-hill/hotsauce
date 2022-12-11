@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import Heading from '../../elements/Heading';
 
-
 import bottle1 from '../../../assets/bottle1.png';
 import bottle2 from '../../../assets/bottle2.png';
 import bottle3 from '../../../assets/bottle3.png';
@@ -17,7 +16,7 @@ const BestSellers = ({ }) => {
     const products = [
         {
             type: 'product',
-            image: set2,
+            image: 'http://localhost:3000/static/media/set2.9c3b4a4d5717736f78f4.png',
             price: "$17.95",
             name: "Sriracha Sampler",
             text: "Lorem ipsum dolor sit amet consectetur adipisicing elit."

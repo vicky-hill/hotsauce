@@ -12,7 +12,6 @@ const ProductGrid = ({ products }) => {
         setSelectedProduct(product);
     }
 
-
     return (
         <>
             <Grid>
@@ -20,10 +19,10 @@ const ProductGrid = ({ products }) => {
                     products.map((product, i) => (
                         <Card
                             key={i}
-                            type={product.type}
+                            type="product"
                             image={product.image}
                             price={product.price}
-                            text={product.text}
+                            text={product.shortDesc}
                             productName={product.name}
                             onClick={() => openModal(product)}
                         />

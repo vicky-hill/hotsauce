@@ -11,8 +11,7 @@ export default function(state = initialState, action) {
 
     switch(type) {
 
-        case types.GET_PRODUCTS_SUCCESS:  
-            console.log(payload)
+        case types.GET_PRODUCTS_SUCCESS:
             return {
                 ...state,
                 loading: false,
