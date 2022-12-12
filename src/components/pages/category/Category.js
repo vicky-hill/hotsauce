@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import Heading from '../../elements/Heading';
 import Container from '../../layout/Container';
 import ProductGrid from '../product/ProductGrid';
+import Loader from '../../layout/Loader';
 
 import images from '../../../utils/images';
 
@@ -27,10 +28,9 @@ const Category = ({ allProducts }) => {
         )
     }, [allProducts])
 
-    console.log(products)
-
     return (
         <Container>
+            <Loader />
             <Heading className="my-5 mt-5" text={`${category} hot sauces`} />
             {
                 products && (

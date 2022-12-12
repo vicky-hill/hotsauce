@@ -3,14 +3,26 @@ import Grid from '../../layout/Grid';
 import Card from '../../elements/Card';
 import AddToCartModal from '../cart/AddToCartModal';
 
-const ProductGrid = ({ products }) => {
+import { connect } from 'react-redux';
+import { addToCart } from '../../../actions/cart.actions';
+
+
+const ProductGrid = ({ products, addToCart }) => {
     const [modal, setModal] = useState(false);
     const [selectedProduct, setSelectedProduct] = useState(null);
 
-    const openModal = (product) => {
-        setModal(true);
+
+    const handleAddToCart = (product) => {
+        const payload = {
+            productID: product._id,
+            quantity: 1
+        }
+
+        addToCart(payload);
         setSelectedProduct(product);
+        setModal(true);
     }
+
 
     return (
         <>
@@ -24,7 +36,7 @@ const ProductGrid = ({ products }) => {
                             price={product.price}
                             text={product.shortDesc}
                             productName={product.name}
-                            onClick={() => openModal(product)}
+                            onClick={() => handleAddToCart(product)}
                         />
                     ))
                 }
@@ -35,4 +47,12 @@ const ProductGrid = ({ products }) => {
     )
 }
 
-export default ProductGrid;
+const mapDispatchToProps = (dispatch) => ({
+    addToCart: (payload) => dispatch(addToCart(payload))
+});
+
+const mapStateToProps = (state) => ({
+
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProductGrid);
