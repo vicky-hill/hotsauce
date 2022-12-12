@@ -1,15 +1,27 @@
-import React from 'react';
+import React, { useEffect, useState} from 'react';
 import SlidingPane from "react-sliding-pane";
 import "react-sliding-pane/dist/react-sliding-pane.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faX } from '@fortawesome/free-solid-svg-icons';
+import { getCartItemInfo } from '../../../utils/getCartItemInfo';
+import images from '../../../utils/images';
+import { connect } from 'react-redux';
+
 
 import set1 from '../../../assets/set1.png';
 import set2 from '../../../assets/set3.png';
 
 import Button from '../../elements/Button';
 
-const SideCart = ({ open, close }) => {
+const SideCart = ({ open, close, cartItems, allProducts }) => {
+    
+    const [items, setItems] = useState([])
+
+    useEffect(() => {
+        if(cartItems) {
+            setItems(getCartItemInfo(cartItems, allProducts).map(product => { return { ...product, image: images[product.image] }}));
+        }     
+    }, [cartItems, allProducts])
 
     return (
         <SlidingPane
@@ -29,24 +41,17 @@ const SideCart = ({ open, close }) => {
 
                     {/* Cart items */}
                     <div className="sidecart__content">
-
-                        <div className="sidecart__content-item">
-                            <img src={set1} className="sidecart__content-image" />
-                            <div className="sidecart__content-info">
-                                <p className='sidecart__content-name'>Hot Sauce Heaven</p>
-                                <p className='sidecart__content-price'>$33.95</p>
+                        {
+                            items.map(item => (
+                                <div className="sidecart__content-item">
+                                <img src={item.image} className="sidecart__content-image" />
+                                <div className="sidecart__content-info">
+                                    <p className='sidecart__content-name'>{item.name}</p>
+                                    <p className='sidecart__content-price'>${item.price}</p>
+                                </div>
                             </div>
-                        </div>
-
-                        <div className="sidecart__content-item">
-                            <img src={set2} className="sidecart__content-image" />
-                            <div className="sidecart__content-info">
-                                <p className='sidecart__content-name'>The scorchers</p>
-                                <p className='sidecart__content-price'>$17.95</p>
-                            </div>
-                        </div>
-
-
+                            ))
+                        }
                     </div>
 
                     {/* Checkout info */}
@@ -72,4 +77,13 @@ const SideCart = ({ open, close }) => {
     )
 }
 
-export default SideCart;
+const mapDispatchToProps = (dispatch) => ({
+
+});
+
+const mapStateToProps = (state) => ({
+    allProducts: state.productsReducer.allProducts,
+    cartItems: state.cartReducer.cartItems
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(SideCart);

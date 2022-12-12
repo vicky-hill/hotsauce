@@ -1,7 +1,7 @@
 import * as types from '../actions/types';
 
 const initialState = {
-    items: [],
+    cartItems: [],
     error: null
 }
 
@@ -13,7 +13,7 @@ export default function(state = initialState, action) {
         case types.LOAD_CART_SUCCESS: {
             return {
                 ...state,
-                items: payload
+                cartItems: payload
             }
         }
 
@@ -23,7 +23,7 @@ export default function(state = initialState, action) {
             
             return {
                 ...state,
-                items: payload
+                cartItems: payload
             }
 
         default:     
