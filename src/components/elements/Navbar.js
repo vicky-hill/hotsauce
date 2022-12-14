@@ -3,10 +3,11 @@ import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faMagnifyingGlass, faCartShopping } from '@fortawesome/free-solid-svg-icons';
 import chilli from '../../assets/chilli.png';
+import { connect } from 'react-redux';
 
 import SideCart from '../pages/cart/SideCart';
 
-const Navbar = ({ }) => {
+const Navbar = ({ cartItems }) => {
     const [sidecart, setSidecart] = useState(false);
     const [logo, setLogo] = useState(false);
 
@@ -63,7 +64,7 @@ const Navbar = ({ }) => {
 
                         <div className="navbar__icons-btn">
                             <FontAwesomeIcon icon={faCartShopping} onClick={() => setSidecart(true)} color="#fff" />
-                            <span className='navbar__icons-badge'>2</span>
+                            <span className='navbar__icons-badge'>{cartItems.length}</span>
                         </div>
 
                     </div>
@@ -75,4 +76,13 @@ const Navbar = ({ }) => {
     )
 }
 
-export default Navbar;
+
+const mapDispatchToProps = (dispatch) => ({
+
+});
+
+const mapStateToProps = (state) => ({
+    cartItems: state.cartReducer.cartItems
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Navbar);

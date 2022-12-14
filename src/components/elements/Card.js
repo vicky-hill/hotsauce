@@ -116,7 +116,9 @@ const propTypesAddToCartCard = {
 }
 
 Card.defaultProps = {
-    className: ""
+    className: "",
+    text: "",
+    highlight: ""
 }
 
 Card.propTypes = {
