@@ -11,12 +11,13 @@ import {
     RESET_PASSWORD_FAILURE
 } from './types';
 
-import { authorization, handleUsers } from '../utils/firebase';
+import { authorization, auth } from '../utils/firebase';
+import { getAuth, sendPasswordResetEmail, signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
 
 /**
  * Register new user
  * @param credentials: { email: string, password: string, ...additionalData: string | number }
- * @returns 
+ * @returns
  */
 export const register = (credentials) => {
     let options = { ...credentials };
@@ -29,7 +30,7 @@ export const register = (credentials) => {
  * Login user
  * @param email: string
  * @param password: string
- * @returns 
+ * @returns payload
  */
 export const login = (email, password) => {
     let options = { email, password };
@@ -43,22 +44,18 @@ export const login = (email, password) => {
  * @returns
  */
 export const checkUserSession = () => {
-    let options = { types: [LOGIN_SUCCESS, LOGIN_FAILURE] }
-    
-    return authorization.checkUserSession(options);
+    const unsubscribe = auth.onAuthStateChanged((userAuth) => {
+        unsubscribe();
+        console.log('logged in', userAuth)
+      }, console.log('logged out'));
+
+      return { type: LOGIN_SUCCESS }
 }
 
 
 export const logout = () => {
     let options = { types: [LOGOUT_SUCCESS, LOGOUT_FAILURE] }
     return authorization.logout(options);
-}
-
-export const updateUser = (payload) => {
-    let options = {};
-    options.types = [UPDATE_USER_SUCCESS, UPDATE_USER_FAILURE]
-
-    return handleUsers.updateUser(options, payload)
 }
 
 export const resetPassword = (email) => {

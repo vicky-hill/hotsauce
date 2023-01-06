@@ -11,13 +11,13 @@ import { login } from '../../../actions/user.actions';
 const Login = ({ login }) => {
 
     const initialValues = {
-        email: "",
-        password: ""
+        email: "vicky.ungemach95@gmail.com",
+        password: "123456"
     }
 
-    const onSubmit = (values, { resetForm }) => {
+    const onSubmit = async (values, { resetForm }) => {
         console.log(values);
-        const res = login(values);
+        const res = await login(values.email, values.password);
         console.log(res);
         resetForm();
     }
