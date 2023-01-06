@@ -10,8 +10,6 @@ const Loader = ({ getAllProducts, loadCart }) => {
         loadCart();
     }, [])
 
-    console.log('loader')
-
     return (
         <></>
     )

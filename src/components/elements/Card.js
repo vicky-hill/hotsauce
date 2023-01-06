@@ -33,7 +33,7 @@ const Card = ({ type, image, title, text, highlight, time, price, productName, h
                 <p className="card__text">{text}</p>
                 <div className="card__cto">
                     <p className="card__cto-time">{time}</p>
-                    <Button>See Recipe</Button>
+                    <Button size="small">See Recipe</Button>
                 </div>
             </div>
         </div>
