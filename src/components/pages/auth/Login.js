@@ -1,11 +1,14 @@
 import React from 'react';
 import { Formik } from 'formik';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 import Container from '../../layout/Container';
 import Button from '../../elements/Button';
 
-const Login = ({ }) => {
+import { login } from '../../../actions/user.actions';
+
+const Login = ({ login }) => {
 
     const initialValues = {
         email: "",
@@ -14,6 +17,8 @@ const Login = ({ }) => {
 
     const onSubmit = (values, { resetForm }) => {
         console.log(values);
+        const res = login(values);
+        console.log(res);
         resetForm();
     }
 
@@ -44,4 +49,13 @@ const Login = ({ }) => {
     )
 }
 
-export default Login;
+
+const mapDispatchToProps = dispatch => ({
+    login: (email, password) => dispatch(login(email, password)),
+});
+
+const mapStateToProps = state => ({
+
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login)

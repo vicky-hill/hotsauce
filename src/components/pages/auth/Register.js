@@ -1,20 +1,25 @@
 import React from 'react';
 import { Formik } from 'formik';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 import Container from '../../layout/Container';
 import Button from '../../elements/Button';
 
-const Register = ({ }) => {
+import { register } from '../../../actions/user.actions';
+
+const Register = ({ register }) => {
 
     const initialValues = {
-        email: "",
-        password: "",
-        password2: ""
+        email: "vicky.ungemach95@gmail.com",
+        password: "123456",
+        password2: "123456"
     }
 
-    const onSubmit = (values, { resetForm }) => {
+    const onSubmit = async (values, { resetForm }) => {
         console.log(values);
+        const res = await register(values);
+        console.log('res', res);
         resetForm();
     }
 
@@ -49,4 +54,12 @@ const Register = ({ }) => {
     )
 }
 
-export default Register;
+const mapDispatchToProps = dispatch => ({
+    register: (email, password) => dispatch(register(email, password)),
+});
+
+const mapStateToProps = state => ({
+
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Register)
