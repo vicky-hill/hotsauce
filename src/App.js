@@ -10,6 +10,7 @@ import Category from './components/pages/category/Category';
 import Footer from './components/layout/Footer';
 import Loader from './components/layout/Loader';
 import Login from './components/pages/auth/Login';
+import Register from './components/pages/auth/Register';
 
 
 
@@ -22,6 +23,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/category/:category" element={<Category />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
       </Routes>
       <Footer />
     </Provider>
