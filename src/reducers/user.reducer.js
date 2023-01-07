@@ -9,7 +9,8 @@ import {
     UPDATE_USER_SUCCESS,
     UPDATE_USER_FAILURE,
     RESET_PASSWORD_SUCCESS,
-    RESET_PASSWORD_FAILURE
+    RESET_PASSWORD_FAILURE,
+    GET_USER_SUCCESS
 } from '../actions/types';
 
 const initialState = {
@@ -27,8 +28,24 @@ export default function (state = initialState, action) {
             return {
                 ...state,
                 loading: false,
-                error: null,
+                error: null
+            }
+
+        case GET_USER_SUCCESS:
+            return {
+                ...state,
+                loading: false,
                 currentUser: payload
+            }
+
+        case LOGOUT_SUCCESS:
+            localStorage.removeItem('token');
+            
+            return {
+                ...state,
+                currentUser: null,
+                loading: false,
+                error: null
             }
 
         default:

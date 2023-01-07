@@ -4,11 +4,11 @@ const instance = axios.create({
     baseURL: "http://localhost:5000/api/hotsauce/",
 });
 
-// instance.interceptors.request.use((config) => {
-//     const token = typeof window !== "undefined" && localStorage.getItem("userToken");
-//     config.headers.Authorization = token ? `Bearer ${token}` : "";
-//     return config;
-// });
+instance.interceptors.request.use((config) => {
+    const token = typeof window !== "undefined" && localStorage.getItem("token");
+    config.headers['x-auth-token']  = token ? token : ''
+    return config;
+});
 
 const api = {
     get:

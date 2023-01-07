@@ -12,14 +12,15 @@ import {
     UPDATE_USER_SUCCESS,
     UPDATE_USER_FAILURE,
     RESET_PASSWORD_SUCCESS,
-    RESET_PASSWORD_FAILURE
+    RESET_PASSWORD_FAILURE,
+    GET_USER_SUCCESS,
+    GET_USER_FAILURE
 } from './types';
 
 
 /**
  * Register new user
  * @param payload: { _id: string, email: string}
- * @returns
  */
 export const register = (payload) => {
     let options = { url: "user" };
@@ -29,35 +30,23 @@ export const register = (payload) => {
 }
 
 /**
- * Login user
- * @param email: string
- * @param password: string
- * @returns payload
- */
-export const login = (email, password) => {
-    let options = { email, password };
-    options.types = [LOGIN_SUCCESS, LOGIN_FAILURE];
-
-    return authorization.login(options);
-};
-
-/**
- * Check user session
- * @returns
+ * Check user session and get current user
  */
 export const checkUserSession = () => {
-    const unsubscribe = auth.onAuthStateChanged((userAuth) => {
-        unsubscribe();
-        console.log('logged in', userAuth)
-      }, console.log('logged out'));
+    let options = { url: "user" };
+    options.types = [GET_USER_SUCCESS, GET_USER_FAILURE];
 
-      return { type: LOGIN_SUCCESS }
+    const unsubscribe = auth.onAuthStateChanged(() => {
+        unsubscribe();
+    });
+
+    return api.get(options)
 }
 
 
 export const logout = () => {
-    let options = { types: [LOGOUT_SUCCESS, LOGOUT_FAILURE] }
-    return authorization.logout(options);
+    auth.signOut();
+    return { type: LOGOUT_SUCCESS }
 }
 
 export const resetPassword = (email) => {

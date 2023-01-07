@@ -16,17 +16,19 @@ const Register = ({ register }) => {
     const resetError = () => setError(null);
 
     const initialValues = {
-        email: "vicky.ungemach95@gmail.com",
-        password: "123456",
-        password2: "123456"
+        email: "",
+        password: "",
+        password2: ""
     }
 
     const onSubmit = async ({ email, password}, { resetForm }) => {
         try {
             const { user } = await createUserWithEmailAndPassword(auth, email, password);
+            
             const payload = { _id: user.uid, email }
-    
             await register(payload);
+
+            localStorage.setItem('token', user.accessToken);
             resetForm(); 
 
         } catch (error) {
