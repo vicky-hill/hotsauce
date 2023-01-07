@@ -5,8 +5,6 @@ import { getHeatLevelColor } from '../../utils/getHeatLevelColor';
 
 import Button from './Button';
 
-import bottle1 from '../../assets/bottle1.png';
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCartShopping } from '@fortawesome/free-solid-svg-icons'
 
@@ -33,7 +31,7 @@ const Card = ({ type, image, title, text, highlight, time, price, productName, h
                 <p className="card__text">{text}</p>
                 <div className="card__cto">
                     <p className="card__cto-time">{time}</p>
-                    <Button size="small">See Recipe</Button>
+                    <Button>See Recipe</Button>
                 </div>
             </div>
         </div>

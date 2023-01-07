@@ -1,16 +1,9 @@
 import {
-    LOGIN_SUCCESS,
-    LOGIN_FAILURE,
-    CHECK_USER_SESSION,
     LOGOUT_SUCCESS,
-    LOGOUT_FAILURE,
     REGISTER_SUCCESS,
     REGISTER_FAILURE,
-    UPDATE_USER_SUCCESS,
-    UPDATE_USER_FAILURE,
-    RESET_PASSWORD_SUCCESS,
-    RESET_PASSWORD_FAILURE,
-    GET_USER_SUCCESS
+    GET_USER_SUCCESS,
+    RESET_ERROR
 } from '../actions/types';
 
 const initialState = {
@@ -23,12 +16,12 @@ export default function (state = initialState, action) {
     const { type, payload } = action;
 
     switch (type) {
-        case LOGIN_SUCCESS:
         case REGISTER_SUCCESS:
             return {
                 ...state,
                 loading: false,
-                error: null
+                error: null,
+                currentUser: payload
             }
 
         case GET_USER_SUCCESS:
@@ -38,9 +31,17 @@ export default function (state = initialState, action) {
                 currentUser: payload
             }
 
+        case REGISTER_FAILURE:
+            return {
+                ...state,
+                loading: false,
+                currentUser: null,
+                error: payload.message
+            }
+
         case LOGOUT_SUCCESS:
             localStorage.removeItem('token');
-            
+
             return {
                 ...state,
                 currentUser: null,
@@ -48,6 +49,13 @@ export default function (state = initialState, action) {
                 error: null
             }
 
+
+        case RESET_ERROR:
+            return {
+                ...state,
+                error: null
+            }
+            
         default:
             return {
                 ...state

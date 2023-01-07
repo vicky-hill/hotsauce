@@ -9,16 +9,22 @@ import { useNavigate } from 'react-router-dom';
 import Container from '../../layout/Container';
 import Button from '../../elements/Button';
 
-import { checkUserSession } from '../../../actions/user.actions';
+import { checkUserSession, resetError } from '../../../actions/user.actions';
 
-const Login = ({ checkUserSession, currentUser }) => {
+const Login = ({ checkUserSession, currentUser, loginError, resetError }) => {
     const navigate = useNavigate();
 
+    const [error, setError] = useState(null);
     const [loading, setLoading] = useState(false);
     
     useEffect(() => {
         currentUser && navigate('/account');
     }, [currentUser]);
+
+    const resetErrors = () => {
+        resetError();
+        setError(null);
+    }
 
     const initialValues = {
         email: "vicky.ungemach95@gmail.com",
@@ -36,7 +42,7 @@ const Login = ({ checkUserSession, currentUser }) => {
             setLoading(false)
 
         } catch (error) {
-            console.log(error);
+            setError(error.message)
             setLoading(false)
         }
     }
@@ -52,15 +58,19 @@ const Login = ({ checkUserSession, currentUser }) => {
                         <h1 className='form__title'>Login</h1>
                         <p className='form__text'>Please enter your email and password:</p>
                         <div className="form__item">
-                            <input value={values.email} onChange={handleChange} name="email" type="text" className='form__item-input' placeholder='Email' required />
+                            <input value={values.email} onChange={handleChange} onFocus={resetErrors} name="email" type="text" className='form__item-input' placeholder='Email' required />
                             <label htmlFor="email" className="form__item-label--floating">Email</label>
                         </div>
                         <div className="form__item">
-                            <input value={values.password} onChange={handleChange} name="password" type="password" className='form__item-input' placeholder='Password' required />
+                            <input value={values.password} onChange={handleChange} onFocus={resetErrors} name="password" type="password" className='form__item-input' placeholder='Password' required />
                             <label htmlFor="password" className="form__item-label--floating">Password</label>
                         </div>
-                        <Button type="submit" rounded block className="mt-2">Login</Button>
-                        {loading && <p className='mt-3'>loading</p>}
+
+                        <p className='form__err'>{ error && error }</p>
+                        <p className='form__err'>{ loginError && loginError }</p>
+                        <p className='mt-3'>{ loading && loading }</p> 
+
+                        <Button size="big" type="submit" rounded block className="mt-2">Login</Button>
                         <p className='form__text mt-5'>Don't have an account? <Link to="/register">Sign up</Link></p>
                     </form>
                 )}
@@ -72,10 +82,12 @@ const Login = ({ checkUserSession, currentUser }) => {
 
 const mapDispatchToProps = dispatch => ({
     checkUserSession: () => dispatch(checkUserSession()),
+    resetError: () => dispatch(resetError())
 });
 
 const mapStateToProps = state => ({
-    currentUser: state.userReducer.currentUser
+    currentUser: state.userReducer.currentUser,
+    loginError: state.userReducer.error
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login)

@@ -1,20 +1,15 @@
 import { api } from '../utils/api';
 import { authorization, auth } from '../utils/firebase';
-import { getAuth, sendPasswordResetEmail, signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
 
 import {
-    LOGIN_SUCCESS,
-    LOGIN_FAILURE,
     LOGOUT_SUCCESS,
-    LOGOUT_FAILURE,
     REGISTER_SUCCESS,
     REGISTER_FAILURE,
-    UPDATE_USER_SUCCESS,
-    UPDATE_USER_FAILURE,
     RESET_PASSWORD_SUCCESS,
     RESET_PASSWORD_FAILURE,
     GET_USER_SUCCESS,
-    GET_USER_FAILURE
+    GET_USER_FAILURE,
+    RESET_ERROR
 } from './types';
 
 
@@ -43,7 +38,9 @@ export const checkUserSession = () => {
     return api.get(options)
 }
 
-
+/**
+ * Logout current user
+ */
 export const logout = () => {
     auth.signOut();
     return { type: LOGOUT_SUCCESS }
@@ -54,4 +51,8 @@ export const resetPassword = (email) => {
     options.types = [RESET_PASSWORD_SUCCESS, RESET_PASSWORD_FAILURE]
 
     return authorization.resetPassword(options, email);
+}
+
+export const resetError = () => {
+    return { type: RESET_ERROR }
 }

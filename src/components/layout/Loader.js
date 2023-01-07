@@ -4,13 +4,14 @@ import { getAllProducts } from '../../actions/products.actions';
 import { loadCart } from '../../actions/cart.actions';
 import { checkUserSession } from '../../actions/user.actions';
 
-const Loader = ({ getAllProducts, loadCart, checkUserSession }) => {
+const Loader = ({ getAllProducts, loadCart, checkUserSession, currentUser, allProducts }) => {
 
     useEffect(() => {
-        getAllProducts();
+        !allProducts.length && getAllProducts();
+        !currentUser && checkUserSession();
+
         loadCart();
-        checkUserSession();
-    }, [])
+    }, [currentUser])
 
     return (
         <></>
@@ -25,7 +26,8 @@ const mapDispatchToProps = (dispatch) => ({
   });
   
   const mapStateToProps = (state) => ({
-
+    currentUser: state.userReducer.currentUser,
+    allProducts: state.productsReducer.allProducts
   });
   
   export default connect(mapStateToProps, mapDispatchToProps)(Loader);

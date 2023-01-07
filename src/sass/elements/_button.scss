@@ -2,9 +2,9 @@
     position: relative;
     font-family: Lato;
     color: white;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     font-weight: 600;
-    height: 44px;
+    height: 34px;
     padding: 0 23px;
     border-radius: 10px;
     text-align: center;
@@ -235,13 +235,14 @@
     }
 
     &--small {
-        height: 34px;
-        font-size: 1.3rem;
+        height: 30px;
+        font-size: 1.4rem;
         padding: 0 15px;
     }
 
     &--big {
-        height: 52px;
+        height: 44px;
+        font-size: 1.5rem;
         padding: 0 32px;
     }
 

@@ -7,7 +7,6 @@ import { logout } from '../../../actions/user.actions';
 import Button from '../../elements/Button';
 import Container from '../../layout/Container';
 
-
 const Account = ({ logout, currentUser }) => {
     const navigate = useNavigate();
 
@@ -16,8 +15,8 @@ const Account = ({ logout, currentUser }) => {
     }, [currentUser])
 
     return (
-        <Container>
-           <p>My account</p> 
+        <Container content="fit-screen extra-narrow" center>
+           <p className='m-5'>My account</p> 
             <Button onClick={logout}>Logout</Button>
         </Container>
     )
