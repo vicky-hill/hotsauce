@@ -2,15 +2,16 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux'
 import { getAllProducts } from '../../actions/products.actions';
 import { loadCart } from '../../actions/cart.actions';
+import { checkUserSession } from '../../actions/user.actions';
 
-const Loader = ({ getAllProducts, loadCart }) => {
+const Loader = ({ getAllProducts, loadCart, checkUserSession, currentUser, allProducts }) => {
 
     useEffect(() => {
-        getAllProducts();
-        loadCart();
-    }, [])
+        !allProducts.length && getAllProducts();
+        !currentUser && checkUserSession();
 
-    console.log('loader')
+        loadCart();
+    }, [currentUser])
 
     return (
         <></>
@@ -20,11 +21,13 @@ const Loader = ({ getAllProducts, loadCart }) => {
 
 const mapDispatchToProps = (dispatch) => ({
     getAllProducts: () => dispatch(getAllProducts()),
-    loadCart: () => dispatch(loadCart())
+    loadCart: () => dispatch(loadCart()),
+    checkUserSession: () => dispatch(checkUserSession())
   });
   
   const mapStateToProps = (state) => ({
-
+    currentUser: state.userReducer.currentUser,
+    allProducts: state.productsReducer.allProducts
   });
   
   export default connect(mapStateToProps, mapDispatchToProps)(Loader);

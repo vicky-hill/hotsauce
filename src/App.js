@@ -9,6 +9,9 @@ import Home from './components/pages/home/Home';
 import Category from './components/pages/category/Category';
 import Footer from './components/layout/Footer';
 import Loader from './components/layout/Loader';
+import Login from './components/pages/auth/Login';
+import Register from './components/pages/auth/Register';
+import Account from './components/pages/auth/Account';
 
 
 
@@ -20,6 +23,9 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/category/:category" element={<Category />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/account" element={<Account />} />
       </Routes>
       <Footer />
     </Provider>

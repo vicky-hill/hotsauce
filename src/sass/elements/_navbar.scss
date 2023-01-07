@@ -104,8 +104,8 @@
             cursor: pointer;
         }
 
-        & > *:not(:last-of-type) {
-            margin-right: 2rem;
+        & > * {
+            margin-left: 2rem;
         }
 
         &-btn {

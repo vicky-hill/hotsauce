@@ -126,7 +126,7 @@
 
     // Gradients
     &--gradient-green {
-        width: 15rem;
+        width: 16rem;
         background: linear-gradient(48deg, rgba(0, 209, 105, 1) 0%, #008643 100%);
 
         &:focus {
@@ -145,7 +145,7 @@
     }
 
     &--gradient-orange {
-        width: 15rem;
+        width: 16rem;
         background: linear-gradient(48deg, rgba(237, 141, 108, 1) 0%, #f15d29 100%);
 
         &:focus {
@@ -164,7 +164,7 @@
     }
 
     &--gradient-red {
-        width: 15rem;
+        width: 16rem;
         background: linear-gradient(48deg, rgba(236, 99, 105, 1) 0%, #ee1e27 100%);
 
         &:focus {
@@ -183,7 +183,7 @@
     }
 
     &--gradient-crimson {
-        width: 15rem;
+        width: 16rem;
         background: linear-gradient(48deg, rgba(159, 21, 32, 1) 0%, #791018 100%);
         
         &:focus {
@@ -236,12 +236,13 @@
 
     &--small {
         height: 30px;
-        font-size: 14px;
+        font-size: 1.4rem;
         padding: 0 15px;
     }
 
     &--big {
-        height: 52px;
+        height: 44px;
+        font-size: 1.5rem;
         padding: 0 32px;
     }
 

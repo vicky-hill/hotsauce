@@ -13,7 +13,7 @@ const Navbar = ({ cartItems }) => {
 
     useEffect(() => {
         document.addEventListener('scroll', (e) => {
-            if(window.scrollY > 70) {
+            if (window.scrollY > 70) {
                 setLogo(true);
             } else {
                 setLogo(false);
@@ -21,7 +21,7 @@ const Navbar = ({ cartItems }) => {
         });
     }, [])
 
-    
+
     return (
         <>
             <header className='header'>
@@ -54,9 +54,9 @@ const Navbar = ({ cartItems }) => {
                         </li>
                     </ul>
                     <div className="navbar__icons">
-                        <div className="navbar__icons-btn">
-                            <FontAwesomeIcon icon={faUser} color="#fff" />
-                        </div>
+                        <Link to="/login" className="navbar__icons-btn">
+                                <FontAwesomeIcon icon={faUser} color="#fff" />
+                        </Link>
 
                         <div className="navbar__icons-btn">
                             <FontAwesomeIcon icon={faMagnifyingGlass} color="#fff" />

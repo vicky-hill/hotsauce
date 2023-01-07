@@ -5,8 +5,6 @@ import { getHeatLevelColor } from '../../utils/getHeatLevelColor';
 
 import Button from './Button';
 
-import bottle1 from '../../assets/bottle1.png';
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCartShopping } from '@fortawesome/free-solid-svg-icons'
 

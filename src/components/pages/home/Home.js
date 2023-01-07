@@ -9,7 +9,7 @@ import Banner from './Banner';
 const Home = ({ }) => {
 
     return (
-        <Container center className="">
+        <Container>
             <Banner />
             <BestSellers />
             <Space md />

@@ -1,0 +1,72 @@
+@import "../base/variables";
+
+.form {
+    &__title {
+        margin-bottom: 5rem;
+        font-size: 5rem;
+    }
+
+    &__text {
+        margin-bottom: 2rem;
+        font-weight: 100;
+        font-size: 1.4rem;
+    }
+
+    &__err {
+        color: $primary;
+        text-align: left;
+        margin-bottom: 1rem;
+        margin-left: 1rem;
+        font-size: 1.4rem;
+    }
+
+    &__item {
+        position: relative;
+        margin-bottom: 15px;
+
+        &-input,
+        &-textarea {
+            display: block;
+            padding: 12px 14px;
+            border: 1px solid #dddddd;
+            width: 100%;
+            line-height: normal;
+            resize: none;
+            transition: border-color 0.1s ease-in-out;
+            background: transparent;
+            border-radius: 30px;
+
+            &::placeholder {
+                color: #777777;
+            }
+
+            &:focus {
+                border-color: #5d5a5a;
+                outline: none;
+            }
+
+            &:not(:placeholder-shown) ~ .form__item-label--floating {
+                opacity: 1;
+                background: white;
+                transform: translateY(0);
+            }
+        }
+
+        &-label {
+            &--floating {
+                position: absolute;
+                bottom: calc(100% - 8px);
+                left: 10px;
+                padding: 0 5px;
+                line-height: normal;
+                color: #777777;
+                font-size: 12px;
+                opacity: 0;
+                background: rgba(255, 255, 255, 0);
+                pointer-events: none;
+                transform: translateY(3px);
+                transition: all 0.3s ease-in-out;
+            }
+        }
+    }
+}

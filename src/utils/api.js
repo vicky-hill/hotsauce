@@ -1,12 +1,12 @@
 import axios from "axios";
 
 const instance = axios.create({
-    baseURL: "http://localhost:5000/api/hotsauce",
+    baseURL: "http://localhost:5000/api/hotsauce/",
 });
 
 instance.interceptors.request.use((config) => {
-    const token = typeof window !== "undefined" && localStorage.getItem("userToken");
-    config.headers.Authorization = token ? `Bearer ${token}` : "";
+    const token = typeof window !== "undefined" && localStorage.getItem("token");
+    config.headers['x-auth-token']  = token ? token : ''
     return config;
 });
 
@@ -41,6 +41,7 @@ const api = {
     post:
         (options, params = null) =>
             async (dispatch) => {
+                console.log('dispatching something')
                 const [success, failure] = options.types;
                 const promise = (resolve, reject) => {
                     instance
