@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const instance = axios.create({
-    baseURL: "http://localhost:5000/api/hotsauce",
+    baseURL: "http://localhost:5000/api/hotsauce/",
 });
 
 // instance.interceptors.request.use((config) => {
@@ -41,6 +41,7 @@ const api = {
     post:
         (options, params = null) =>
             async (dispatch) => {
+                console.log('dispatching something')
                 const [success, failure] = options.types;
                 const promise = (resolve, reject) => {
                     instance

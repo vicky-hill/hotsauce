@@ -5,7 +5,7 @@ import {
     LOGOUT_SUCCESS,
     LOGOUT_FAILURE,
     REGISTER_SUCCESS,
-    REGISTER_FAIL,
+    REGISTER_FAILURE,
     UPDATE_USER_SUCCESS,
     UPDATE_USER_FAILURE,
     RESET_PASSWORD_SUCCESS,
@@ -30,7 +30,6 @@ export default function (state = initialState, action) {
                 error: null,
                 currentUser: payload
             }
-
 
         default:
             return {

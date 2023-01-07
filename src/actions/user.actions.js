@@ -1,29 +1,31 @@
+import { api } from '../utils/api';
+import { authorization, auth } from '../utils/firebase';
+import { getAuth, sendPasswordResetEmail, signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
+
 import {
     LOGIN_SUCCESS,
     LOGIN_FAILURE,
     LOGOUT_SUCCESS,
     LOGOUT_FAILURE,
     REGISTER_SUCCESS,
-    REGISTER_FAIL,
+    REGISTER_FAILURE,
     UPDATE_USER_SUCCESS,
     UPDATE_USER_FAILURE,
     RESET_PASSWORD_SUCCESS,
     RESET_PASSWORD_FAILURE
 } from './types';
 
-import { authorization, auth } from '../utils/firebase';
-import { getAuth, sendPasswordResetEmail, signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
 
 /**
  * Register new user
- * @param credentials: { email: string, password: string, ...additionalData: string | number }
+ * @param payload: { _id: string, email: string}
  * @returns
  */
-export const register = (credentials) => {
-    let options = { ...credentials };
-    options.types = [REGISTER_SUCCESS, REGISTER_FAIL];
+export const register = (payload) => {
+    let options = { url: "user" };
+    options.types = [REGISTER_SUCCESS, REGISTER_FAILURE];
 
-    return authorization.register(options);
+    return api.post(options, payload);
 }
 
 /**

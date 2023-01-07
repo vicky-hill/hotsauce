@@ -2,6 +2,8 @@ import React from 'react';
 import { Formik } from 'formik';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { auth } from '../../../utils/firebase';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
 
 import Container from '../../layout/Container';
 import Button from '../../elements/Button';
@@ -16,11 +18,18 @@ const Register = ({ register }) => {
         password2: "123456"
     }
 
-    const onSubmit = async (values, { resetForm }) => {
-        console.log(values);
-        const res = await register(values);
-        console.log('res', res);
-        resetForm();
+    const onSubmit = async ({ email, password}, { resetForm }) => {
+        try {
+            const { user } = await createUserWithEmailAndPassword(auth, email, password);
+            const payload = { _id: user.uid, email }
+    
+            await register(payload);
+            resetForm(); 
+
+        } catch (error) {
+            console.log(error)
+        }
+
     }
 
     return (
