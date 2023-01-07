@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Formik } from 'formik';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -11,6 +11,9 @@ import Button from '../../elements/Button';
 import { register } from '../../../actions/user.actions';
 
 const Register = ({ register }) => {
+    const [error, setError] = useState(null);
+
+    const resetError = () => setError(null);
 
     const initialValues = {
         email: "vicky.ungemach95@gmail.com",
@@ -27,7 +30,7 @@ const Register = ({ register }) => {
             resetForm(); 
 
         } catch (error) {
-            console.log(error)
+            setError(error.message)
         }
 
     }
@@ -43,17 +46,18 @@ const Register = ({ register }) => {
                         <h1 className='form__title'>Register</h1>
                         <p className='form__text'>Please enter your email and password:</p>
                         <div className="form__item">
-                            <input value={values.email} onChange={handleChange} name="email" type="text" className='form__item-input' placeholder='Email' required />
+                            <input value={values.email} onChange={handleChange} onFocus={resetError} name="email" type="text" className='form__item-input' placeholder='Email' required />
                             <label htmlFor="email" className="form__item-label--floating">Email</label>
                         </div>
                         <div className="form__item">
-                            <input value={values.password} onChange={handleChange} name="password" type="password" className='form__item-input' placeholder='Password' required />
+                            <input value={values.password} onChange={handleChange} onFocus={resetError} name="password" type="password" className='form__item-input' placeholder='Password' required />
                             <label htmlFor="password" className="form__item-label--floating">Password</label>
                         </div>
                         <div className="form__item">
-                            <input value={values.password2} onChange={handleChange} name="password2" type="password" className='form__item-input' placeholder='Confirm Password' required />
+                            <input value={values.password2} onChange={handleChange} onFocus={resetError} name="password2" type="password" className='form__item-input' placeholder='Confirm Password' required />
                             <label htmlFor="password" className="form__item-label--floating">Confirm Password</label>
                         </div>
+                        <p className='form__err'>{ error && error }</p>
                         <Button type="submit" rounded block className="mt-2">Register</Button>
                         <p className='form__text mt-5'>Alreay have an account? <Link to="/login">Login</Link></p>
                     </form>
