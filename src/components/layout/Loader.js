@@ -10,7 +10,8 @@ const Loader = ({ getAllProducts, loadCart, checkUserSession, currentUser, allPr
         !allProducts.length && getAllProducts();
         !currentUser && checkUserSession();
 
-        loadCart();
+        loadCart(currentUser);
+        console.log(currentUser)
     }, [currentUser])
 
     return (

@@ -13,7 +13,7 @@ export default function(state = initialState, action) {
         case types.LOAD_CART_SUCCESS: {
             return {
                 ...state,
-                cartItems: payload
+                cartItems: payload.items
             }
         }
 
