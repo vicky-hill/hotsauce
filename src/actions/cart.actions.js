@@ -1,25 +1,45 @@
 import { api } from '../utils/api';
-import * as types from './types';
+import {
+    ADD_TO_CART_SUCCESS,
+    ADD_TO_CART_FAILURE,
+    LOAD_CART_SUCCESS,
+    LOAD_CART_FAILURE
+} from './types';
 
 const cartItemsFromStorage = () => {
     return localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : [];
 }
 
+/**
+ * Load current user cart
+ * @param user: { }
+ * @returns cart {}
+ */
 export const loadCart = () => {
 
-    // If no current user, load cart from local storage    
-    return {
-        type: types.LOAD_CART_SUCCESS,
-        payload: cartItemsFromStorage()
+    // If not logged in, load cart from local storage    
+    if (cartItemsFromStorage.length) {
+        return {
+            type: LOAD_CART_SUCCESS,
+            payload: { items: cartItemsFromStorage() }
+        }
     }
+
+    let options = { url: 'cart'};
+    options.types = [
+        LOAD_CART_SUCCESS,
+        LOAD_CART_FAILURE
+    ]
+
+    return api.get(options)
 }
 
 export const addToCart = (item) => {
     let options = { url: 'cart' };
 
     options.types = [
-        types.ADD_TO_CART_SUCCESS,
-        types.ADD_TO_CART_FAILURE
+        ADD_TO_CART_SUCCESS,
+        ADD_TO_CART_FAILURE
     ];
 
     // return api.get(options);
@@ -38,7 +58,7 @@ export const addToCart = (item) => {
     }
 
     return {
-        type: types.ADD_TO_CART_SUCCESS,
+        type: ADD_TO_CART_SUCCESS,
         payload: updatedCart
     }
 }

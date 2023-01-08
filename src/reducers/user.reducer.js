@@ -25,6 +25,8 @@ export default function (state = initialState, action) {
             }
 
         case GET_USER_SUCCESS:
+            localStorage.removeItem('cart');
+            
             return {
                 ...state,
                 loading: false,
