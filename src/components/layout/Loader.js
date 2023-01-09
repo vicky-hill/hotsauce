@@ -4,7 +4,7 @@ import { getAllProducts } from '../../actions/products.actions';
 import { loadCart, addToCart } from '../../actions/cart.actions';
 import { checkUserSession } from '../../actions/user.actions';
 
-const Loader = ({ getAllProducts, loadCart, checkUserSession, currentUser, allProducts }) => {
+const Loader = ({ getAllProducts, loadCart, checkUserSession, currentUser, allProducts, addToCart }) => {
 
     const localStorageCart = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : null;
 
@@ -30,12 +30,12 @@ const mapDispatchToProps = (dispatch) => ({
     getAllProducts: () => dispatch(getAllProducts()),
     loadCart: () => dispatch(loadCart()),
     checkUserSession: () => dispatch(checkUserSession()),
-    addToCart: (payload) => dispatch(addToCart())
+    addToCart: (payload, currentUser) => dispatch(addToCart(payload, currentUser))
   });
   
   const mapStateToProps = (state) => ({
     currentUser: state.userReducer.currentUser,
-    allProducts: state.productsReducer.allProducts
+    allProducts: state.productsReducer.allProducts,
   });
   
   export default connect(mapStateToProps, mapDispatchToProps)(Loader);

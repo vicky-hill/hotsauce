@@ -12,7 +12,7 @@ instance.interceptors.request.use((config) => {
 
 const api = {
     get:
-        (options, select = null) =>
+        (options) =>
             async (dispatch) => {
                 const [success, failure] = options.types;
                 const promise = (resolve, reject) => {
@@ -94,7 +94,7 @@ const api = {
                 return new Promise(promise);
             },
     delete:
-        (options, noLoading = false) =>
+        (options = false) =>
             async (dispatch) => {
                 const [success, failure] = options.types;
                 const promise = (resolve, reject) => {

@@ -38,6 +38,7 @@ export const loadCart = () => {
 /**
  * Add to cart
  * @param items: [{ productID: string, quantity: number }]
+ * @param currentUser: { _id: string, email: string }
  * @returns cart {}
  */
 export const addToCart = (items, currentUser) => {
@@ -48,10 +49,10 @@ export const addToCart = (items, currentUser) => {
         ADD_TO_CART_FAILURE
     ];
 
-    console.log('currentUser', currentUser)
+    const payload = { items };
 
     // If no current user, add to local storage
-    if (!currentUser) {
+    if (!currentUser) {        
         const item = items[0];
         const existingItem = cartItemsFromStorage().find(storageItem => storageItem.productID === item.productID)
         let updatedCart = [...cartItemsFromStorage()];
@@ -65,24 +66,15 @@ export const addToCart = (items, currentUser) => {
             updatedCart.push(item)
         }
 
+        localStorage.setItem('cart', JSON.stringify(updatedCart));
+
         return {
             type: ADD_TO_CART_SUCCESS,
-            payload: updatedCart
+            payload: { items: updatedCart }
         }
     }
 
-    return {
-        type: ADD_TO_CART_SUCCESS
-    }
-}
-
-/**
- * Add to cart in local storage
- * @param items { productID: string, quantity: number }
- * @returns cart {}
- */
-export const addToLocalStorageCart = (item) => {
-
+    return api.post(options, payload);
 }
 
 /**

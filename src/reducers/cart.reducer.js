@@ -22,12 +22,9 @@ export default function(state = initialState, action) {
         }
 
         case ADD_TO_CART_SUCCESS:
-            // if no current user, and no local storage cart, create cart
-            localStorage.setItem('cart', JSON.stringify(payload));
-            
             return {
                 ...state,
-                cartItems: payload
+                cartItems: payload.items
             }
 
         case CLEAR_CART_SUCCESS:

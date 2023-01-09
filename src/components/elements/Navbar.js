@@ -38,7 +38,7 @@ const Navbar = ({ cartItems }) => {
                             <img src={chilli} />
                         </li>
                         <li>
-                            <a href="#">Hot Sauces</a>
+                            <Link to="/category/medium">Hot Sauces</Link>
                         </li>
                         <li>
                             <a href="#">Hot Sauce Gifts</a>

@@ -43,12 +43,6 @@ const Register = ({ register, currentUser, registerError, resetError }) => {
 
             localStorage.setItem('token', user.accessToken);
 
-            // const lsCart = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : null;
-
-            // if (lsCart) {
-            //     addToCart(lsCart, res.payload);
-            // }
-
             resetForm();
             setLoading(false);
 
