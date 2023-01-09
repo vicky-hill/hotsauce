@@ -24,9 +24,7 @@ export default function (state = initialState, action) {
                 currentUser: payload
             }
 
-        case GET_USER_SUCCESS:
-            localStorage.removeItem('cart');
-            
+        case GET_USER_SUCCESS:            
             return {
                 ...state,
                 loading: false,
@@ -43,6 +41,7 @@ export default function (state = initialState, action) {
 
         case LOGOUT_SUCCESS:
             localStorage.removeItem('token');
+            localStorage.removeItem('cart');
 
             return {
                 ...state,

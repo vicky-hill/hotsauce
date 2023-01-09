@@ -41,7 +41,6 @@ const api = {
     post:
         (options, params = null) =>
             async (dispatch) => {
-                console.log('dispatching something')
                 const [success, failure] = options.types;
                 const promise = (resolve, reject) => {
                     instance
