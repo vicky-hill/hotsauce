@@ -2,8 +2,8 @@ import React, { useEffect} from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { connect } from 'react-redux';
-import { logout } from '../../../actions/user.actions';
-import { clearCart, loadCart } from '../../../actions/cart.actions';
+import { logout } from '../../../actions/userActions';
+import { clearCart, loadCart } from '../../../actions/cartActions';
 
 import Button from '../../elements/Button';
 import Container from '../../layout/Container';

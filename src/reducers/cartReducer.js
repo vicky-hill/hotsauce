@@ -2,7 +2,7 @@ import {
     LOAD_CART_SUCCESS,
     CLEAR_CART_SUCCESS,
     ADD_TO_CART_SUCCESS
-} from '../actions/types';
+} from '../actions/actionTypes';
 
 const initialState = {
     cartItems: [],

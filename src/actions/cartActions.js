@@ -5,7 +5,7 @@ import {
     LOAD_CART_SUCCESS,
     LOAD_CART_FAILURE,
     CLEAR_CART_SUCCESS
-} from './types';
+} from './actionTypes';
 
 const cartItemsFromStorage = () => {
     return localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : [];
@@ -13,7 +13,6 @@ const cartItemsFromStorage = () => {
 
 /**
  * Load current user cart
- * @param user: { }
  * @returns cart {}
  */
 export const loadCart = () => {

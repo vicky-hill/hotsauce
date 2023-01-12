@@ -4,7 +4,7 @@ import Card from '../../elements/Card';
 import AddToCartModal from '../cart/AddToCartModal';
 
 import { connect } from 'react-redux';
-import { addToCart } from '../../../actions/cart.actions';
+import { addToCart } from '../../../actions/cartActions';
 
 
 const ProductGrid = ({ products, addToCart, currentUser }) => {

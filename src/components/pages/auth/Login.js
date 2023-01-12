@@ -9,8 +9,8 @@ import { useNavigate } from 'react-router-dom';
 import Container from '../../layout/Container';
 import Button from '../../elements/Button';
 
-import { checkUserSession, resetError } from '../../../actions/user.actions';
-import { loadCart } from '../../../actions/cart.actions';
+import { checkUserSession, resetError } from '../../../actions/userActions';
+import { loadCart } from '../../../actions/cartActions';
 
 const Login = ({ checkUserSession, currentUser, loginError, resetError, loadCart }) => {
     const navigate = useNavigate();

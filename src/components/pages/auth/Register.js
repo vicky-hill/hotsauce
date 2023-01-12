@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router-dom';
 import Container from '../../layout/Container';
 import Button from '../../elements/Button';
 
-import { register, resetError } from '../../../actions/user.actions';
+import { register, resetError } from '../../../actions/userActions';
 
 const Register = ({ register, currentUser, registerError, resetError }) => {
     const navigate = useNavigate();

@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux'
-import { getAllProducts } from '../../actions/products.actions';
-import { loadCart, addToCart } from '../../actions/cart.actions';
-import { checkUserSession } from '../../actions/user.actions';
+import { getAllProducts } from '../../actions/productActions';
+import { loadCart, addToCart } from '../../actions/cartActions';
+import { checkUserSession } from '../../actions/userActions';
 
 const Loader = ({ getAllProducts, loadCart, checkUserSession, currentUser, allProducts, addToCart }) => {
 

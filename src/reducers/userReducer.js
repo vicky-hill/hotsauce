@@ -4,7 +4,7 @@ import {
     REGISTER_FAILURE,
     GET_USER_SUCCESS,
     RESET_ERROR
-} from '../actions/types';
+} from '../actions/actionTypes';
 
 const initialState = {
     currentUser: null,

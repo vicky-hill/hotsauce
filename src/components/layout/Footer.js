@@ -1,11 +1,17 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebookF, faInstagram, faTwitter, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 
 const Footer = ({ }) => {
 
+    const [hide, setHide] = useState(false);
+
+    useEffect(() => {
+        window.location.href.includes('checkout') ? setHide(true) : setHide(false);
+    }, [])
+
     return (
-        <footer className='footer'>
+        <footer className={`footer ${hide ? 'hide' : ''}`}>
             <div className="footer__content">
                 <div className="footer__content-links">
                     <a href="#">TERMS</a>

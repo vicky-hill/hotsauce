@@ -10,7 +10,7 @@ import {
     GET_USER_SUCCESS,
     GET_USER_FAILURE,
     RESET_ERROR
-} from './types';
+} from './actionTypes';
 
 
 /**
