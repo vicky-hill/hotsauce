@@ -1,5 +1,5 @@
 import { api } from '../utils/api';
-import * as types from './types';
+import * as types from './actionTypes';
 
 export const getAllProducts = () => {
     let options = { url: 'products' };

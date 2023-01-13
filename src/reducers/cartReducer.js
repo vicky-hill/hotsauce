@@ -1,4 +1,8 @@
-import * as types from '../actions/types';
+import {
+    LOAD_CART_SUCCESS,
+    CLEAR_CART_SUCCESS,
+    ADD_TO_CART_SUCCESS
+} from '../actions/actionTypes';
 
 const initialState = {
     cartItems: [],
@@ -10,20 +14,24 @@ export default function(state = initialState, action) {
 
     switch(type) {
 
-        case types.LOAD_CART_SUCCESS: {
+        case LOAD_CART_SUCCESS: {
             return {
                 ...state,
                 cartItems: payload.items
             }
         }
 
-        case types.ADD_TO_CART_SUCCESS:
-            // if no current user, and no local storage cart, create cart
-            localStorage.setItem('cart', JSON.stringify(payload));
-            
+        case ADD_TO_CART_SUCCESS:
             return {
                 ...state,
-                cartItems: payload
+                cartItems: payload.items
+            }
+
+        case CLEAR_CART_SUCCESS:
+            return {
+                ...state,
+                cartItems: [],
+                error: null
             }
 
         default:     

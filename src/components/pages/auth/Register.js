@@ -9,47 +9,47 @@ import { useNavigate } from 'react-router-dom';
 import Container from '../../layout/Container';
 import Button from '../../elements/Button';
 
-import { register, resetError } from '../../../actions/user.actions';
+import { register, resetError } from '../../../actions/userActions';
 
 const Register = ({ register, currentUser, registerError, resetError }) => {
     const navigate = useNavigate();
 
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(false);
-    
+
     useEffect(() => {
         currentUser && navigate('/account');
     }, [currentUser]);
-    
+
     const resetErrors = () => {
         resetError();
         setError(null);
     }
 
-
     const initialValues = {
-        email: "",
-        password: "",
-        password2: ""
+        email: "pm+@excersys.com",
+        password: "123456",
+        password2: "123456"
     }
 
-    const onSubmit = async ({ email, password}, { resetForm }) => {
+    const onSubmit = async ({ email, password }, { resetForm }) => {
         try {
             setLoading(true);
+
             const { user } = await createUserWithEmailAndPassword(auth, email, password);
-            
+
             const payload = { _id: user.uid, email }
-            await register(payload);
+            register(payload);
 
             localStorage.setItem('token', user.accessToken);
-            resetForm(); 
+
+            resetForm();
             setLoading(false);
 
         } catch (error) {
             setError(error.message)
             setLoading(false);
         }
-
     }
 
     return (
@@ -75,9 +75,9 @@ const Register = ({ register, currentUser, registerError, resetError }) => {
                             <label htmlFor="password" className="form__item-label--floating">Confirm Password</label>
                         </div>
 
-                        <p className='form__err'>{ error && error }</p>
-                        <p className='form__err'>{ registerError && registerError }</p>
-                        <p className='mt-3'>{ loading && loading }</p> 
+                        <p className='form__err'>{error && error}</p>
+                        <p className='form__err'>{registerError && registerError}</p>
+                        <p className='mt-3'>{loading && loading}</p>
 
                         <Button size="big" type="submit" rounded block className="mt-2">Register</Button>
                         <p className='form__text mt-5'>Alreay have an account? <Link to="/login">Login</Link></p>

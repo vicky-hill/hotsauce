@@ -10,6 +10,7 @@ import SideCart from '../pages/cart/SideCart';
 const Navbar = ({ cartItems }) => {
     const [sidecart, setSidecart] = useState(false);
     const [logo, setLogo] = useState(false);
+    const [hideNav, setHideNav] = useState(false);
 
     useEffect(() => {
         document.addEventListener('scroll', (e) => {
@@ -19,11 +20,13 @@ const Navbar = ({ cartItems }) => {
                 setLogo(false);
             }
         });
+
+        window.location.href.includes('checkout') ? setHideNav(true) : setHideNav(false);
     }, [])
 
 
     return (
-        <>
+        <div className={hideNav ? 'hide' : ''}>
             <header className='header'>
                 <Link to="/">
                     <h1 className='header__logo'><span className='header__logo--accent'>Hill</span> Sauce & Co.</h1>
@@ -38,7 +41,7 @@ const Navbar = ({ cartItems }) => {
                             <img src={chilli} />
                         </li>
                         <li>
-                            <a href="#">Hot Sauces</a>
+                            <Link to="/category/medium">Hot Sauces</Link>
                         </li>
                         <li>
                             <a href="#">Hot Sauce Gifts</a>
@@ -72,7 +75,7 @@ const Navbar = ({ cartItems }) => {
             </nav>
 
             <SideCart open={sidecart} close={() => setSidecart(false)} />
-        </>
+        </div>
     )
 }
 

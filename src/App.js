@@ -12,6 +12,7 @@ import Loader from './components/layout/Loader';
 import Login from './components/pages/auth/Login';
 import Register from './components/pages/auth/Register';
 import Account from './components/pages/auth/Account';
+import Checkout from './components/pages/checkout/Checkout';
 
 
 
@@ -26,6 +27,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/account" element={<Account />} />
+        <Route path="/checkout" element={<Checkout />} />
       </Routes>
       <Footer />
     </Provider>

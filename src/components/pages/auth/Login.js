@@ -9,9 +9,10 @@ import { useNavigate } from 'react-router-dom';
 import Container from '../../layout/Container';
 import Button from '../../elements/Button';
 
-import { checkUserSession, resetError } from '../../../actions/user.actions';
+import { checkUserSession, resetError } from '../../../actions/userActions';
+import { loadCart } from '../../../actions/cartActions';
 
-const Login = ({ checkUserSession, currentUser, loginError, resetError }) => {
+const Login = ({ checkUserSession, currentUser, loginError, resetError, loadCart }) => {
     const navigate = useNavigate();
 
     const [error, setError] = useState(null);
@@ -27,7 +28,7 @@ const Login = ({ checkUserSession, currentUser, loginError, resetError }) => {
     }
 
     const initialValues = {
-        email: "vicky.ungemach95@gmail.com",
+        email: "pm+@excersys.com",
         password: "123456"
     }
 
@@ -38,6 +39,8 @@ const Login = ({ checkUserSession, currentUser, loginError, resetError }) => {
             localStorage.setItem('token', user.accessToken);
 
             checkUserSession();
+            loadCart();
+
             resetForm();
             setLoading(false)
 
@@ -82,7 +85,8 @@ const Login = ({ checkUserSession, currentUser, loginError, resetError }) => {
 
 const mapDispatchToProps = dispatch => ({
     checkUserSession: () => dispatch(checkUserSession()),
-    resetError: () => dispatch(resetError())
+    resetError: () => dispatch(resetError()),
+    loadCart: () => dispatch(loadCart())
 });
 
 const mapStateToProps = state => ({
